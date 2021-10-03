@@ -1,6 +1,23 @@
 # flutterecom
 
-Flutter Ecom
+Red-Tires-E-commerce-Flutter-app-BloC Arch (Demo / Under Development)
+
+Red Tires| Flutter (Demo / Under Development)
+*Clone of Custom UI/UX
+*Bloc Arch and State management
+*Dart
+*Clean code and arch standards
+*MVVM
+*Google, Phone, Email Auth
+*Hive DB for Local Cart system
+*Firebase Firestore (As a Rest API)
+*Dynamic FCM
+*Android Native fully functional control panel
+
+![ScreenShot](https://mostaql.hsoubcdn.com/uploads/thumbnails/372144/615a0c8bb98a8/0732782c-bd50-45dd-ad76-d6b64e7399ca.jpg)
+![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615a0c8c4b67d/9d1b386c-125c-430c-a2ca-c28271287529.jpg)
+![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615a0c8c8deb9/0732782c-bd50-45dd-ad76-d6b64e7399ca.jpg)
+
 
 ## Getting Started
 

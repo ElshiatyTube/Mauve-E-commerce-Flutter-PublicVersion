@@ -17,6 +17,7 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit =HomeLayoutCubit.get(context);
+    //For For
     return Container(
       padding: const EdgeInsets.all(10.0),
       child: Column(

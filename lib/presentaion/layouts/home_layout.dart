@@ -15,6 +15,7 @@ import 'package:flutterecom/cubit/check_connection/check_connection_state.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_state.dart';
 import 'package:flutterecom/data/models/category_model.dart';
+import 'package:flutterecom/presentaion/modules/categories/categories_screen.dart';
 import 'package:flutterecom/presentaion/modules/home/home_screen.dart';
 import 'package:flutterecom/presentaion/modules/products/products_screen.dart';
 import 'package:flutterecom/presentaion/views/categoryies_grid_item.dart';
@@ -39,6 +40,7 @@ class HomeLayout extends StatelessWidget {
     print('LayoutRebuild');
 
     return BlocConsumer<HomeLayoutCubit, HomeLayoutStates>(
+
       listener: (BuildContext context, Object? state) {
         if (state is UpdateMainUserTokenStateSuccess) {
           showToast(msg: 'TokenUpdated', state: ToastedStates.SUCCESS);
@@ -50,6 +52,12 @@ class HomeLayout extends StatelessWidget {
           _widgetInBody = cubit.bottomScreens[cubit.currentIndex];
           print('Btn_va_Current_index: ${cubit.currentIndex}');
         }
+        if (state is NavigateToToCategoryListState) {
+          if(cubit.currentIndex!=1){
+            cubit.currentIndex = 1;
+          }
+          _widgetInBody = CategoriesScreen();
+        }
         if(state is NavigateToProductListByCategoryState){
           if(cubit.currentIndex!=1){
             cubit.currentIndex = 1;
@@ -59,9 +67,10 @@ class HomeLayout extends StatelessWidget {
 
       },
       builder: (context,state){
+        print('_widgetInBody ${_widgetInBody.toString()}');
         return Scaffold(
             appBar: AppBar(
-              leading: state is NavigateToProductListByCategoryState ? IconButton(
+              leading: _widgetInBody.toString() == 'ProductsScreen' ? IconButton(
                 icon: Icon(
                   context.locale.toString() == 'en_EN'
                       ? Iconly_Broken.Arrow___Left_2

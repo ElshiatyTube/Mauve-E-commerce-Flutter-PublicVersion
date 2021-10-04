@@ -3,8 +3,10 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutterecom/cubit/home_layout/home_layout_state.dart';
 import 'package:flutterecom/data/models/category_model.dart';
 import 'package:flutterecom/presentaion/views/categoryies_list_item.dart';
 import 'package:flutterecom/shared/commponents/commopnents.dart';
@@ -17,6 +19,7 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit =HomeLayoutCubit.get(context);
+    print('This is Categories Screen');
     //For For
     return Container(
       padding: const EdgeInsets.all(10.0),
@@ -57,20 +60,24 @@ class CategoriesScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10.0,),
-          ConditionalBuilder(
-            condition:cubit.categoryList.isNotEmpty ,
-            builder: (BuildContext context){
-              return Expanded(
-                child: ListView.separated(
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => animateListView(index: index,buildItemClass: CategoryListItem(categoryItem: cubit.categoryList[index])), ///CategoryListItem(categoryItem: cubit.categoryList[index],)
-                  separatorBuilder: (context, index) => const SizedBox(height: 5.0,),
-                  itemCount: cubit.categoryList.length,
-                ),
-              );
-            },
-            fallback: (BuildContext context) =>
-                defaultLinearProgressIndicator(),
+          BlocBuilder<HomeLayoutCubit,HomeLayoutStates>(
+           builder: (context,state){
+             return ConditionalBuilder(
+               condition:cubit.categoryList.isNotEmpty ,
+               builder: (BuildContext context){
+                 return Expanded(
+                   child: ListView.separated(
+                     physics: const BouncingScrollPhysics(),
+                     itemBuilder: (context, index) => animateListView(index: index,buildItemClass: CategoryListItem(categoryItem: cubit.categoryList[index])), ///CategoryListItem(categoryItem: cubit.categoryList[index],)
+                     separatorBuilder: (context, index) => const SizedBox(height: 5.0,),
+                     itemCount: cubit.categoryList.length,
+                   ),
+                 );
+               },
+               fallback: (BuildContext context) =>
+                   defaultLinearProgressIndicator(),
+             );
+           },
           ),
         ],
       ),

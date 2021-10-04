@@ -41,13 +41,26 @@ class FailedCategoriesState extends HomeLayoutInitState{
 
   FailedCategoriesState(this.error);
 }
+//Products States
+class LoadingProductsState extends HomeLayoutInitState{}
+class SuccessProductsState extends HomeLayoutInitState{
 
+}
+class FailedProductsState extends HomeLayoutInitState{
+  final String error;
+
+  FailedProductsState(this.error);
+}
+
+//Navigation States
 class ChangeBottomNavState extends HomeLayoutInitState{}
 class NavigateToProductListByCategoryState extends HomeLayoutInitState{
   final CategoriesModel categoryItem;
 
   NavigateToProductListByCategoryState(this.categoryItem);
 }
+class NavigateToToCategoryListState extends HomeLayoutInitState{}
+
 
 
 

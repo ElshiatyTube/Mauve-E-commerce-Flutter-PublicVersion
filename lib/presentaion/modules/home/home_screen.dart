@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_state.dart';
 import 'package:flutterecom/presentaion/layouts/home_layout.dart';
+import 'package:flutterecom/presentaion/views/add_to_cart_btn.dart';
 import 'package:flutterecom/presentaion/views/categoryies_grid_item.dart';
 import 'package:flutterecom/presentaion/views/slider_item.dart';
 import 'package:flutterecom/shared/commponents/commopnents.dart';
@@ -43,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
    var cubit = HomeLayoutCubit.get(context);
-
+   print('This is home Screen');
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Container(
@@ -52,17 +53,22 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Text('Brands',
+              children: [
+                const Text('Brands',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15.0)),
-                Spacer(),
-                Text(
-                  'SeeAll',
-                  style: TextStyle(
-                      color: defaultColor,
-                      decoration: TextDecoration.underline,
-                      fontSize: 13.0),
+                const Spacer(),
+                InkWell(
+                  onTap: (){
+                    cubit.navigateToCategoryList();
+                  },
+                  child: const Text(
+                    'SeeAll',
+                    style: TextStyle(
+                        color: defaultColor,
+                        decoration: TextDecoration.underline,
+                        fontSize: 13.0),
+                  ),
                 ),
               ],
             ),
@@ -138,17 +144,22 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Text('Special Offers',
+              children:  [
+                const Text('Special Offers',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15.0)),
-                Spacer(),
-                Text(
-                  'SeeAll',
-                  style: TextStyle(
-                      color: defaultColor,
-                      decoration: TextDecoration.underline,
-                      fontSize: 13.0),
+                const Spacer(),
+                InkWell(
+                  onTap: (){
+                   // cubit.navigateToCategoryList();
+                  },
+                  child: const Text(
+                    'SeeAll',
+                    style: TextStyle(
+                        color: defaultColor,
+                        decoration: TextDecoration.underline,
+                        fontSize: 13.0),
+                  ),
                 ),
               ],
             ),
@@ -205,21 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Text("80.00 EGP",style: TextStyle(color: defaultColor),),
                             ],
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: defaultColor,
-                                width: 1.5,
-                              ),
-                              borderRadius: const BorderRadius.all(
-                                  Radius.circular(10.0)
-                              ),
-                            ),
-                            child: const Padding(
-                              padding:  EdgeInsets.only(right: 35.0,left: 35.0,top: 7.0,bottom: 7.0),
-                              child:  Text('Add To Cart',style: TextStyle(color: defaultColor),),
-                            ),
-                          ),
+                          const AddToCartBTN(),
                         ],
                       ),
 

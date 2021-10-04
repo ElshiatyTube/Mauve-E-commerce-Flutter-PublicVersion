@@ -5,7 +5,7 @@ import 'package:flutterecom/shared/constants/constants.dart';
 class CategoryApi {
   List<CategoriesModel> categoryList;
 
-  CategoryApi(this.categoryList);
+  CategoryApi({required this.categoryList});
 
   Future<dynamic> getCategories() async => FirebaseFirestore.instance
           .collection(CATEGORIES_COLLECTION)

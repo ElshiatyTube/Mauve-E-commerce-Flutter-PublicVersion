@@ -1,7 +1,7 @@
 class CategoriesModel{
  String? menu_id='';
  late String name,name_ar,image;
- late List subCat;
+ List? subCat;
 
 
  CategoriesModel(
@@ -18,7 +18,7 @@ class CategoriesModel{
     if (json['subCat'] != null) {
       subCat = [];
       json['subCat'].forEach((v) {
-        subCat.add(v);
+        subCat!.add(v);
       });
     }
   }
@@ -29,7 +29,7 @@ class CategoriesModel{
       'name':name,
       'name_ar':name_ar,
       'image':image,
-      'subCat':subCat.map((e) => e.toString()).toList(),
+      'subCat':subCat!.map((e) => e.toString()).toList(),
     };
   }
 

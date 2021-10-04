@@ -7,10 +7,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterecom/cubit/auth/auth_cubit.dart';
 import 'package:flutterecom/data/api/category_api.dart';
+import 'package:flutterecom/data/api/products_api.dart';
 import 'package:flutterecom/data/models/category_model.dart';
+import 'package:flutterecom/data/models/product_model.dart';
 import 'package:flutterecom/data/models/token_model.dart';
 import 'package:flutterecom/data/models/user_model.dart';
 import 'package:flutterecom/data/repo/category_repo.dart';
+import 'package:flutterecom/data/repo/product_repo.dart';
 import 'package:flutterecom/presentaion/modules/account/account_screen.dart';
 import 'package:flutterecom/presentaion/modules/categories/categories_screen.dart';
 import 'package:flutterecom/presentaion/modules/home/home_screen.dart';
@@ -115,7 +118,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
 
   void getCategoryList()
   {
-    CategoryRepo categoryRepo = CategoryRepo(CategoryApi(categoryList));
+    CategoryRepo categoryRepo = CategoryRepo(CategoryApi(categoryList: categoryList));
     emit(LoadingCategoriesState());
 
     categoryRepo.getCategories().then((value) {
@@ -129,6 +132,24 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
 
   void navigateToProductListByCategory({required CategoriesModel categoryItem}) {
     emit(NavigateToProductListByCategoryState(categoryItem));
+  }
+  void navigateToCategoryList() {
+    emit(NavigateToToCategoryListState());
+  }
+
+ late List<ProductModel> productList;
+
+  void getProductsByCategoryMenuId({required CategoriesModel categoriesItem}) {
+    productList=[];
+    ProductsRepo productsRepo = ProductsRepo(ProductsApi(productList: productList, selectedCategoryItem: categoriesItem));
+    emit(LoadingProductsState());
+
+    productsRepo.getProducts().then((value) {
+      productList = value;
+      emit(SuccessProductsState());
+    }).catchError((onError){
+      emit(FailedProductsState(onError.toString()));
+    });
   }
 
 

@@ -3,7 +3,7 @@
 Red-Tires-E-commerce-Flutter-app-BloC Arch (Demo / Under Development)
 
 Red Tires| Flutter (Demo / Under Development)
-*Clone of Custom UI/UX
+*Custom UI/UX
 *Bloc Arch and State management
 *Dart
 *Clean code and arch standards

@@ -63,7 +63,7 @@ void navigateAndFinish(context, widget) =>
           (route) => false,
     );
 
- defaultLinearProgressIndicator()=>const LinearProgressIndicator(color: Colors.grey,);
+ Widget defaultLinearProgressIndicator()=>const LinearProgressIndicator(color: Colors.grey,);
 
 
 enum ConnectionType{

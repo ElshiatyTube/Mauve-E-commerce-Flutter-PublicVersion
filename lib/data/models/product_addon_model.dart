@@ -1,23 +1,23 @@
 class ProductAddonModel
 {
- late String name;
+ late String name,name_ar;
  late num price;
- late bool value;
+// bool value = false;
 
-  ProductAddonModel({required this.name, required this.price, this.value=false});
+
 
   ProductAddonModel.fromJson(Map<String,dynamic> json)
   {
     name = json['name'];
+    name_ar = json['name_ar'];
     price = json['price'];
-    value = false;
   }
   Map<String,dynamic> toMap()
   {
     return {
       'name':name,
+      'name_ar':name_ar,
       'price':price,
-      'value':false,
     };
   }
 }

@@ -77,3 +77,38 @@ child: const Text('login')),
 ],
 ),
 )*/
+
+
+/*return Wrap(
+children: productItem.addon!.map((e) => Padding(
+padding: const EdgeInsets.all(4.0),
+child: ChoiceChip(
+selected: ProductDetailsCubit.get(context).isSelectedService(e),
+selectedColor: Colors.red,
+label: Text(e.name),
+labelStyle: const TextStyle(color: Colors.white),
+backgroundColor: Colors.teal,
+onSelected: (isSelected) => ProductDetailsCubit.get(context).emitAddonChange(isSelected, e),
+),
+),
+).toList(),
+);*/
+
+/*  return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: productItem.addon!.map((ProductAddonModel e) => Wrap(
+                              children: [
+                                const SizedBox(width: 5.0,),
+                                FilterChip(
+                                  label:context.locale.toString() == 'en_EN'?  Text('${e.name} +${e.price}LE',style: Theme.of(context).textTheme.caption,) : Text('${e.name_ar} +${e.price}LE',style: Theme.of(context).textTheme.caption,),
+                                  selected:ProductDetailsCubit.get(context).isSelectedService(e),
+                                  onSelected: (bool isSelected) {
+                                    ProductDetailsCubit.get(context).emitAddonChange(isSelected, e);
+                                  },
+                                ),
+                              ],
+                            ),).toList(),
+                          ),
+                        );*/

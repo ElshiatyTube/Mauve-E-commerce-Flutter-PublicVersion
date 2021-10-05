@@ -6,7 +6,10 @@ const String splashPath = '/';
 const String loginPath = '/login';
 const String registerPath = '/register';
 const String homeLayoutPath = '/home_layout';
+const String productDetailsPath = '/product_details';
 const String otpPath = '/otp';
+
+
 
 //final navigatorKey = GlobalKey<NavigatorState>();
 

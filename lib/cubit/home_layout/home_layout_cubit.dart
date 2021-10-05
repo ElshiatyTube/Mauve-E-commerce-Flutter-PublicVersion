@@ -130,6 +130,8 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
   }
 
 
+  late CategoriesModel selectedCategory;
+
   void navigateToProductListByCategory({required CategoriesModel categoryItem}) {
     emit(NavigateToProductListByCategoryState(categoryItem));
   }
@@ -146,6 +148,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
 
     productsRepo.getProducts().then((value) {
       productList = value;
+      selectedCategory = categoriesItem; //Late use
       emit(SuccessProductsState());
     }).catchError((onError){
       emit(FailedProductsState(onError.toString()));

@@ -56,7 +56,7 @@ class HomeLayout extends StatelessWidget {
           if(cubit.currentIndex!=1){
             cubit.currentIndex = 1;
           }
-          _widgetInBody = CategoriesScreen();
+          _widgetInBody = const CategoriesScreen();
         }
         if(state is NavigateToProductListByCategoryState){
           if(cubit.currentIndex!=1){

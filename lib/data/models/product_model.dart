@@ -4,8 +4,8 @@ import 'package:flutterecom/data/models/product_rate_model.dart';
 import 'package:flutterecom/data/models/product_size_model.dart';
 class ProductModel{
   String? id='';
-  String? name_ar='';
-  String? description_ar='';
+  late String name_ar;
+  late String description_ar;
   String? subCat='';
 
   late String menu_id,name,image,description;

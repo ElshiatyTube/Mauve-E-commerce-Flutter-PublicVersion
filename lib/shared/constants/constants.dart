@@ -112,3 +112,56 @@ onSelected: (isSelected) => ProductDetailsCubit.get(context).emitAddonChange(isS
                             ),).toList(),
                           ),
                         );*/
+
+
+
+
+
+
+/*var rateCollection = FirebaseFirestore.instance
+        .collection(CATEGORIES_COLLECTION)
+        .doc(productItem.menu_id)
+        .collection(PRODUCTS_COLLECTION)
+        .doc(productItem.id)
+        .collection(RATES_COLLECTION);
+    if (hasLimit) {
+      productRateLimitedList = [];
+      rateCollection.orderBy('commentTime',descending: true).limit(3).get().then((value) {
+        value.docs.forEach((element) {
+          productRateLimitedList.add(ProductRateModel.fromJson(element.data()));
+        });
+        emit(ProductsRatesSuccessState());
+      }).catchError((onError) {
+        emit(ProductsRatesErrorState(onError.toString()));
+      });
+    }
+    else{
+      productRateList = [];
+      rateCollection.orderBy('commentTime',descending: true).get().then((value) {
+        value.docs.forEach((element) {
+          productRateList.add(ProductRateModel.fromJson(element.data()));
+        });
+        emit(ProductsRatesSuccessState());
+      }).catchError((onError) {
+        emit(ProductsRatesErrorState(onError.toString()));
+      });
+    }*/
+
+
+
+/*void getMoreProductItemRates({required ProductModel productItem}){
+   FirebaseFirestore.instance
+        .collection(CATEGORIES_COLLECTION)
+        .doc(productItem.menu_id)
+        .collection(PRODUCTS_COLLECTION)
+        .doc(productItem.id)
+        .collection(RATES_COLLECTION)
+       .limit(3).get().then((value) {
+     value.docs.forEach((element) {
+       productRateList.add(ProductRateModel.fromJson(element.data()));
+     });
+     emit(ProductsRatesSuccessState());
+   }).catchError((onError) {
+     emit(ProductsRatesErrorState(onError.toString()));
+   });
+  }*/

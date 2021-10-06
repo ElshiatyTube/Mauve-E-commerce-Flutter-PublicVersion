@@ -73,6 +73,8 @@ dependencies:
   flutter_slidable: any
   bloc: ^7.0.0
   flutter_bloc: ^7.0.1
+  flutter_rating_bar: ^4.0.0
+  lazy_load_scrollview: any
   flutter_svg: any
   pin_code_fields: ^7.3.0
   hive: any

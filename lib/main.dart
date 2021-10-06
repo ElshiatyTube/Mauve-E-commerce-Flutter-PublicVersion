@@ -23,6 +23,7 @@ import 'cubit/auth/auth_cubit.dart';
 import 'cubit/check_connection/check_connection_cubit.dart';
 import 'cubit/check_connection/check_connection_state.dart';
 import 'cubit/home_layout/home_layout_cubit.dart';
+import 'cubit/product_details/product_details_cubit.dart';
 
 
 Future<void> main() async {
@@ -40,12 +41,12 @@ Future<void> main() async {
 
 
 
- /* runApp(DevicePreview(
+  /*runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (BuildContext context)=>EasyLocalization(
         path: 'resources/languages',
         saveLocale: true,
-        supportedLocales: [const Locale('en', 'EN'), const Locale('ar', 'AR')],
+        supportedLocales:const [ Locale('en', 'EN'), Locale('ar', 'AR')],
         child: OneNotification(builder: (_, __) =>  MyApp(appRouter: AppRouter(),) )
     ),
   ));*/
@@ -53,7 +54,7 @@ Future<void> main() async {
   runApp(EasyLocalization(
       path: 'resources/languages',
       saveLocale: true,
-      supportedLocales: [const Locale('en', 'EN'), const Locale('ar', 'AR')],
+      supportedLocales:const [Locale('en', 'EN'), Locale('ar', 'AR')],
       child: OneNotification(builder: (_, __) =>  MyApp(appRouter: AppRouter(),) )
   ));
 }
@@ -124,6 +125,7 @@ class MyApp extends StatelessWidget {
        BlocProvider(create: (_) => CheckConnectionCubit()..initializeConnectivity(),),
        BlocProvider(create: (_) => AuthCubit(),),
        BlocProvider(create: (_)=> HomeLayoutCubit(_)..initFirebaseBackgroundFCM(_)..getBackgroundFcmData()..getCategoryList(),),
+       BlocProvider(create: (_) => ProductDetailsCubit(),),
      ],
       child: MultiBlocListener(
         listeners: [

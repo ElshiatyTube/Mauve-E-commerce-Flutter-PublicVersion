@@ -12,4 +12,32 @@ class DownloadProImageToShareLoadingState extends ProductDetailsStates{}
 class DownloadProImageToShareSuccessState extends ProductDetailsStates{}
 
 
+class emitChangeRatingValueState extends ProductDetailsStates{}
+
+//Submit Rate
+class SubmitUserProductRateLoadingState extends ProductDetailsStates{}
+class SubmitUserProductRateSuccessState extends ProductDetailsStates{}
+class SubmitUserProductRateErrorState extends ProductDetailsStates{
+ final String error;
+
+ SubmitUserProductRateErrorState(this.error);
+}
+
+//Get Rates
+class ProductsRatesLoadingState extends ProductDetailsStates{}
+class ProductsRatesSuccessState extends ProductDetailsStates{}
+
+
+class ProductsRatesErrorState extends ProductDetailsStates{
+ final String error;
+
+ ProductsRatesErrorState(this.error);
+}
+
+
+
+
+
+
+
 

@@ -10,14 +10,14 @@ class ProductModel{
 
   late String menu_id,name,image,description;
   late num price, oldPrice;
-  num? ratingValue=0.1, ratingCount=0.1;
+  late num ratingValue, ratingCount;
   late  bool availability;
    List<ProductSizeModel>? size;
    List<ProductAddonModel>? addon;
 
    List<ProductAddonModel>? userSelectedAddon;
    ProductSizeModel? userSelectedSize;
-   List<ProductRateModel>? rates;
+   //List<ProductRateModel> rates=[];
    DocumentReference? reference;
 
 
@@ -46,8 +46,16 @@ class ProductModel{
      menu_id = json['menu_id'];
      price = json['price'];
      oldPrice = json['oldPrice'];
-     ratingValue = json['ratingValue'];
-     ratingCount = json['ratingCount'];
+     if(json['ratingValue'] != null){
+       ratingValue = json['ratingValue'];
+     }else{
+       ratingValue = 0.1;
+     }
+     if(json['ratingCount'] != null){
+       ratingCount = json['ratingCount'];
+     }else{
+       ratingCount = 0.1;
+     }
      if (json['size'] != null) {
        size = <ProductSizeModel>[];
        json['size'].forEach((v) {
@@ -69,12 +77,12 @@ class ProductModel{
 
      userSelectedSize = json['userSelectedSize'] != null ? ProductSizeModel.fromJson(json['userSelectedSize']) : null;
 
-     if (json['rates'] != null) {
+    /* if (json['rates'] != null) {
        rates = <ProductRateModel>[];
        json['rates'].forEach((v) {
-         rates!.add(ProductRateModel.fromJson(v));
+         rates.add(ProductRateModel.fromJson(v));
        });
-     }
+     }*/
 
 
    }
@@ -92,14 +100,14 @@ class ProductModel{
        'menu_id':menu_id,
        'price':price,
        'oldPrice':oldPrice,
-       'ratingValue':ratingValue,
-       'ratingCount':ratingCount,
+       'ratingValue':ratingValue!=0.1 ? ratingValue : 0.1,
+       'ratingCount':ratingCount!=0.1 ? ratingCount : 0.1,
        'size':size!.map((e) => e.toMap()).toList(),
        'addon':addon!.map((e) => e.toMap()).toList(),
        'userSelectedAddon':userSelectedAddon!.map((e) => e.toMap()).toList(),
        'userSelectedSize':userSelectedSize,
        //this.userSelectedSize!=ProductSizeModel('',0,'') ?  'userSelectedSize':userSelectedSize.toMap() : null,
-       'rates':rates!.map((e) => e.toMap()).toList(),
+       //'rates':rates.map((e) => e.toMap()).toList(),
 
 
      };

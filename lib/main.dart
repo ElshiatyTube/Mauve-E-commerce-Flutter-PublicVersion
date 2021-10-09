@@ -124,8 +124,7 @@ class MyApp extends StatelessWidget {
      providers: [
        BlocProvider(create: (_) => CheckConnectionCubit()..initializeConnectivity(),),
        BlocProvider(create: (_) => AuthCubit(),),
-       BlocProvider(create: (_)=> HomeLayoutCubit(_)..initFirebaseBackgroundFCM(_)..getBackgroundFcmData()..getCategoryList(),),
-       BlocProvider(create: (_) => ProductDetailsCubit(),),
+       BlocProvider(create: (_)=> HomeLayoutCubit(_)..initFirebaseBackgroundFCM(_)..getBackgroundFcmData()..getInfo()..getCategoryList(),),
      ],
       child: MultiBlocListener(
         listeners: [

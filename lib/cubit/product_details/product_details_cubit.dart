@@ -169,5 +169,29 @@ class ProductDetailsCubit extends Cubit<ProductDetailsStates> {
 
   }
 
+
+ late List<ProductModel> suggestedProducts;
+
+  void getProductSuggestedItems({required ProductModel productItem,required BuildContext context}){
+    emit(SuggestedProLoadingState());
+
+    suggestedProducts=[];
+
+    if(HomeLayoutCubit.get(context).productList.length > 1){
+      HomeLayoutCubit.get(context).productList.forEach((element) {
+        int currentIndex = HomeLayoutCubit.get(context).productList.indexOf(element);
+        if(currentIndex < 10){
+          if(element.id !=productItem.id){
+            suggestedProducts.add(element);
+          }
+        }
+      });
+      emit(SuggestedProSuccessState());
+    }else{
+      emit(SuggestedProIsEmptyState());
+    }
+
+  }
+
 }
 

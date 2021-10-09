@@ -30,3 +30,11 @@ final Widget googleIcon = SvgPicture.asset(
     color: defaultColor,
     semanticsLabel: 'googleIcon'
 );
+
+final Widget whatsappIcon = SvgPicture.asset(
+    'assets/images/whatsapp.svg',
+    height: 13,
+    width: 13,
+    semanticsLabel: 'whatsappIcon'
+);
+

@@ -7,6 +7,8 @@ const String loginPath = '/login';
 const String registerPath = '/register';
 const String homeLayoutPath = '/home_layout';
 const String productDetailsPath = '/product_details';
+const String userAddressPath = '/user_address';
+const String chatPath = '/chat';
 const String otpPath = '/otp';
 
 

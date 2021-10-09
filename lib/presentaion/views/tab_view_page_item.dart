@@ -11,6 +11,7 @@ class TabViewPageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return  AnimationLimiter(
       child: GridView.count(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         crossAxisCount: 2,
         childAspectRatio: 1 / 1.25,
@@ -23,7 +24,7 @@ class TabViewPageItem extends StatelessWidget {
             child: ScaleAnimation(
               child: FadeInAnimation(
                 child: ProductGridItem(
-                  productItem: productList[index],
+                  productItem: productList[index],isSuggested: false,
                 ),
               ),
             ),

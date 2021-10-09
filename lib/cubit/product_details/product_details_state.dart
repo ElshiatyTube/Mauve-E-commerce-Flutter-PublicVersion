@@ -34,6 +34,12 @@ class ProductsRatesErrorState extends ProductDetailsStates{
  ProductsRatesErrorState(this.error);
 }
 
+//Get Suggested
+class SuggestedProLoadingState extends ProductDetailsStates{}
+class SuggestedProSuccessState extends ProductDetailsStates{}
+
+
+class SuggestedProIsEmptyState extends ProductDetailsStates{}
 
 
 

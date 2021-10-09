@@ -24,6 +24,10 @@ class MyColors{
   static const Color scaffoldBackgroundColorMain = Color(0xffFAFAFA);
   static const Color iconsColor = Color(0xff434343);
 
+  static const Color iconsBgColor = Color(0xffF4F4F5);
+
+
+
 
 
 

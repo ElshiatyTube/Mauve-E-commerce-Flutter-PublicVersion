@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -22,6 +24,8 @@ import 'package:flutterecom/presentaion/modules/products/products_screen.dart';
 import 'package:flutterecom/services/fcm/firebase_notification_handler.dart';
 import 'package:flutterecom/shared/constants/constants.dart';
 import 'package:flutterecom/shared/network/local/cache_helper.dart';
+import 'package:ntp/ntp.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'home_layout_state.dart';
 
 class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
@@ -155,6 +159,98 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
     });
   }
 
+  //Settings Screen
+
+  String welcomeText = 'Welcome';
+  void getWelcomeText(DateTime dateTime) async {
+    DateTime now = dateTime.toLocal();
+    int offset = await NTP.getNtpOffset(localTime: now); //Sync time with server
+    DateTime syncTime = now.add(Duration(milliseconds: offset));
+    var timeNow = syncTime.hour;
+
+    if (timeNow <= 12) { //12
+      welcomeText =  'Good Morning';
+    } else if ((timeNow > 12) && (timeNow <= 16)) { //12 - 4 pm
+      welcomeText = 'Good Afternoon';
+    } else if ((timeNow > 16) && (timeNow < 20)) { //4 - 9 pm
+      welcomeText = 'Good Evening';
+    } else { // 9 -12 pm
+      welcomeText = 'Good Night';
+    }
+
+    emit(WelcomeState());
+  }
+
+  String appleId='',hotline='',whatsapp='',complaints='',about='',aboutAr='';
+  late int androidVersion,iosVersion;
+  bool open=true,inviteBtn=false;
+  void getInfo()
+  {
+
+    FirebaseFirestore.instance
+        .collection(INFO_COLLECTION)
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        if(element.id == 'appleId') {
+          appleId = element['val'];
+        }
+        if(element.id == 'hotline') {
+          hotline = element['val'];
+        }
+        if(element.id == 'whatsapp') {
+          whatsapp = element['val'];
+        }
+        if(element.id == 'complaints') {
+          complaints = element['val'];
+        }
+        if(element.id == 'open') {
+          open = element['val'];
+        }
+        if(element.id == 'invite_btn') {
+          inviteBtn = element['val'];
+        }
+        if(element.id == 'about') {
+          about = element['val'];
+        }
+        if(element.id == 'about_ar') {
+          aboutAr = element['val'];
+        }
+        if(element.id == 'appVersion'){
+          androidVersion = element['androidVersion'];
+          iosVersion = element['iosVersion'];
+        }
+      });
+      emit(GetStoreInfoStateSuccess(open,androidVersion,iosVersion,appleId));
+    }).catchError((onError){
+      print('ErrorInfo: ${onError.toString()}');
+    });
+  }
+
+
+  void callNumber() async {
+    String url = "tel://" + hotline;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      if(Platform.isIOS) {
+        launch('tel:$hotline');
+      } else {
+        throw 'Could not call $hotline';
+      }
+
+    }
+  }
+
+  void whatsappLaunch() async {
+    String url = "https://wa.me/$whatsapp?text=Hello From Red App";
+
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch whatsapp $whatsapp';
+    }
+  }
 
 
 }

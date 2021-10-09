@@ -17,7 +17,7 @@ class AddToCartBTN extends StatelessWidget {
         ),
       ),
       child: const Padding(
-        padding:  EdgeInsets.only(right: 30.0,left: 30.0,top: 7.0,bottom: 7.0),
+        padding:  EdgeInsets.only(right: 28.0,left: 28.0,top: 7.0,bottom: 7.0),
         child:  Text('Add To Cart',style: TextStyle(color: defaultColor),),
       ),
     );

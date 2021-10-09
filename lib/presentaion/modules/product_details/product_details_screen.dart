@@ -17,6 +17,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutterecom/data/models/product_rate_model.dart';
 import 'package:flutterecom/presentaion/views/add_to_cart_counter.dart';
 import 'package:flutterecom/presentaion/views/all_review_btn_sheet.dart';
+import 'package:flutterecom/presentaion/views/products_grid_item.dart';
 import 'package:flutterecom/presentaion/views/radio_item_tile.dart';
 import 'package:flutterecom/presentaion/views/review_grid_item.dart';
 import 'package:flutterecom/presentaion/views/review_item.dart';
@@ -50,7 +51,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     }else{
       ProductDetailsCubit.get(context).productRateLimitedList=[];
     }
+    ProductDetailsCubit.get(context).getProductSuggestedItems(productItem: widget.productItem,context: context);
+
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -73,17 +77,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ),
         actions: [
           Platform.isAndroid  ? BlocBuilder<ProductDetailsCubit,ProductDetailsStates>(
-           builder: (context,state){
-             return IconButton(
-               onPressed: () {
-                 ProductDetailsCubit.get(context).downloadProImageToShare(widget.productItem.image,widget.productItem.name)
-                     .then((file) {
-                   ShareExtend.share(file.path, "image",extraText: widget.productItem.name);
-                 });
-               },
-               icon: const Icon(Iconly_Broken.Send,color: MyColors.iconsColor,),
-             );
-           },
+            builder: (context,state){
+              return IconButton(
+                onPressed: () {
+                  ProductDetailsCubit.get(context).downloadProImageToShare(widget.productItem.image,widget.productItem.name)
+                      .then((file) {
+                    ShareExtend.share(file.path, "image",extraText: widget.productItem.name);
+                  });
+                },
+                icon: const Icon(Iconly_Broken.Send,color: MyColors.iconsColor,),
+              );
+            },
           ) : Container(),
           IconButton(
             onPressed: () {
@@ -104,7 +108,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           }
           if(state is ProductsRatesErrorState){
             showToast(msg: state.error, state: ToastedStates.WARNING);
-            Navigator.pop(context);
           }
         },
         child: SingleChildScrollView(
@@ -207,8 +210,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 Text(
                   'Description',
                   style: Theme.of(context).textTheme.caption!.copyWith(
-                        fontSize: 14.0,
-                      ),
+                    fontSize: 14.0,
+                  ),
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -227,7 +230,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         style: const TextStyle(
                           fontSize: 14.0,
                           height: 2.0,
-                            color: MyColors.iconsColor,
+                          color: MyColors.iconsColor,
 
                         ),
                       ),
@@ -365,6 +368,34 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   },
                 ),
 
+                ProductDetailsCubit.get(context).suggestedProducts.isNotEmpty ?  Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Featured Product',
+                      style: Theme.of(context)
+                          .textTheme
+                          .caption!
+                          .copyWith(
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 190.0,
+                      child: ListView.separated(
+                        physics: const BouncingScrollPhysics(),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context,index) => ProductGridItem(productItem: ProductDetailsCubit.get(context).suggestedProducts[index], isSuggested: true,),
+                        separatorBuilder: (context,index) => const SizedBox(width: 5.0,),
+                        itemCount: ProductDetailsCubit.get(context).suggestedProducts.length,
+                      ),
+                    )
+                  ],
+                ) : Container()
+
+
               ],
             ),
           ),
@@ -379,7 +410,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       context: context,
       builder: (context) {
-        return  AllReviewBtnSheet(productItem: productItem);
+        return  BlocProvider(create: (_) => ProductDetailsCubit(),child: AllReviewBtnSheet(productItem: productItem));
       },
     );
   }

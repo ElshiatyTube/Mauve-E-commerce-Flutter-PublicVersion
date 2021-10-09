@@ -35,7 +35,8 @@ class _AllReviewBtnSheetState extends State<AllReviewBtnSheet> {
             color: MyColors.scaffoldBackgroundColorMain,
             borderRadius: BorderRadius.only(
                 topLeft:  Radius.circular(15.0),
-                topRight: Radius.circular(15.0))),
+                topRight: Radius.circular(15.0))
+        ),
         height: double.infinity,
         width: double.infinity,
         child: Column(

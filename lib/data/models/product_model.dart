@@ -45,7 +45,11 @@ class ProductModel{
      subCat = json['subCat'];
      menu_id = json['menu_id'];
      price = json['price'];
-     oldPrice = json['oldPrice'];
+     if(json['oldPrice'] != null){
+       oldPrice = json['oldPrice'];
+     }else{
+       oldPrice = json['price'];
+     }
      if(json['ratingValue'] != null){
        ratingValue = json['ratingValue'];
      }else{

@@ -62,6 +62,21 @@ class NavigateToProductListByCategoryState extends HomeLayoutInitState{
 class NavigateToToCategoryListState extends HomeLayoutInitState{}
 
 
+//Setting Screen
+class WelcomeState extends HomeLayoutInitState{}
+
+class GetStoreInfoStateSuccess extends HomeLayoutInitState{
+  final bool openState;
+  final int androidVersion,iosVersion;
+  final String appleId;
+
+  GetStoreInfoStateSuccess(
+      this.openState, this.androidVersion, this.iosVersion,this.appleId);
+}
+
+
+
+
 
 
 

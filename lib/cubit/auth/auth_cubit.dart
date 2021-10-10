@@ -329,10 +329,10 @@ class AuthCubit extends Cubit<AuthStates> {
     if(_googleSignIn.currentUser!=null){
       await _googleSignIn.signOut();
     }
+    Boxes.getEmployees().clear();
     CacheHelper.removeData(key: 'uId');
     await auth.signOut();
     OneNotification.hardReloadRoot(context);
- //   Phoenix.rebirth(context);
 
   }
 

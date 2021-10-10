@@ -11,6 +11,7 @@ import 'package:flutterecom/data/api/reviews_api.dart';
 import 'package:flutterecom/data/models/product_addon_model.dart';
 import 'package:flutterecom/data/models/product_model.dart';
 import 'package:flutterecom/data/models/product_rate_model.dart';
+import 'package:flutterecom/data/models/product_size_model.dart';
 import 'package:flutterecom/data/repo/reviews_repo.dart';
 import 'package:flutterecom/shared/constants/constants.dart';
 import 'package:http/http.dart' as http;
@@ -36,13 +37,16 @@ class ProductDetailsCubit extends Cubit<ProductDetailsStates> {
 
   int groupValue = 0;
 
-  void emitSizeChange(int newValue) {
+  ProductSizeModel userSelectedSize = ProductSizeModel(name_ar: '',name: '',price: 0);
+
+  void emitSizeChange(int newValue,ProductSizeModel selectedSize) {
     groupValue = newValue;
-    print('NewVal ${groupValue}');
+    userSelectedSize = selectedSize;
     emit(emitRadioChangeState());
   }
 
   List<ProductAddonModel> userSelectedAddons = [];
+
 
   bool isSelectedService(ProductAddonModel e) {
     return userSelectedAddons.contains(e);

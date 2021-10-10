@@ -21,6 +21,7 @@ class ElevatedButtonIconView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       onPressed: function,
       icon: icon,
       label: Padding(

@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterecom/cubit/cart/cart_cubit.dart';
 import 'package:flutterecom/presentaion/dialogs/interner_check_dialog.dart';
 import 'package:flutterecom/shared/bloc_observer.dart';
 import 'package:flutterecom/shared/constants/constants.dart';
@@ -125,6 +126,7 @@ class MyApp extends StatelessWidget {
        BlocProvider(create: (_) => CheckConnectionCubit()..initializeConnectivity(),),
        BlocProvider(create: (_) => AuthCubit(),),
        BlocProvider(create: (_)=> HomeLayoutCubit(_)..initFirebaseBackgroundFCM(_)..getBackgroundFcmData()..getInfo()..getCategoryList(),),
+       BlocProvider(create: (_) => CartCubit(),),
      ],
       child: MultiBlocListener(
         listeners: [

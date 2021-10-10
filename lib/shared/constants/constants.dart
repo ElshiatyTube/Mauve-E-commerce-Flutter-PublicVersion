@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutterecom/shared/network/local/hive/employee.dart';
+import 'package:hive/hive.dart';
 
 late BuildContext mainAppContext;
 
@@ -7,6 +9,8 @@ const String loginPath = '/login';
 const String registerPath = '/register';
 const String homeLayoutPath = '/home_layout';
 const String productDetailsPath = '/product_details';
+const String cartPath = '/cart';
+
 const String userAddressPath = '/user_address';
 const String chatPath = '/chat';
 const String otpPath = '/otp';
@@ -35,6 +39,10 @@ final String PROMOS_COLLECTION ='Promos';
 final String INVITAIONSCODES_COLLECTION ='InvitationsCodes';
 
 
+
+class Boxes {
+  static Box<Employee> getEmployees() => Hive.box<Employee>('employee');
+}
 
 /*
 Center(

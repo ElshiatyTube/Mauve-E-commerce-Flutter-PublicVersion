@@ -6,13 +6,22 @@ part 'employee.g.dart';
 class Employee extends HiveObject {
 
   @HiveField(0)
-  late String id;
+  late String productId;
   @HiveField(1)
-  late String firstName;
+  late String uid;
   @HiveField(2)
-  late String lastName;
+  late String productName;
   @HiveField(3)
-  late String email;
+  late String productImage;
+  @HiveField(4)
+  late String productAddon;
+  @HiveField(5)
+  late String productSize;
+  @HiveField(6)
+  late double price;
+  @HiveField(7)
+  late int quantity;
+
 
 
  /* Employee(

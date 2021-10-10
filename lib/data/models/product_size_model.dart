@@ -3,7 +3,7 @@ class ProductSizeModel {
   late num price;
 
 
-  ProductSizeModel(this.name, this.price,this.name_ar);
+  ProductSizeModel({required this.name, required this.price,required this.name_ar});
 
   ProductSizeModel.fromJson(Map<String,dynamic> json)
   {

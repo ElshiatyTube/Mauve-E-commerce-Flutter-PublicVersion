@@ -10,6 +10,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterecom/cubit/auth/auth_cubit.dart';
+import 'package:flutterecom/cubit/cart/cart_cubit.dart';
+import 'package:flutterecom/cubit/cart/cart_state.dart';
 import 'package:flutterecom/cubit/check_connection/check_connection_cubit.dart';
 import 'package:flutterecom/cubit/check_connection/check_connection_state.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
@@ -18,6 +20,7 @@ import 'package:flutterecom/data/models/category_model.dart';
 import 'package:flutterecom/presentaion/modules/categories/categories_screen.dart';
 import 'package:flutterecom/presentaion/modules/home/home_screen.dart';
 import 'package:flutterecom/presentaion/modules/products/products_screen.dart';
+import 'package:flutterecom/presentaion/views/cart_badge_btn.dart';
 import 'package:flutterecom/presentaion/views/categoryies_grid_item.dart';
 import 'package:flutterecom/presentaion/views/default_form_field.dart';
 import 'package:flutterecom/presentaion/views/slider_item.dart';
@@ -90,24 +93,8 @@ class HomeLayout extends StatelessWidget {
                 label: 'Search'.tr(),
                 textInputType: TextInputType.emailAddress,
               ),
-              actions: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  child: Badge(
-                    badgeContent: const Text(
-                      '2',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    position: BadgePosition.topStart(top: 1, start: 8),
-                    badgeColor: defaultColor,
-                    child: const Icon(
-                      Iconly_Broken.Buy,
-                      color: MyColors.iconsColor,
-                    ),
-                  ),
-                )
+              actions: const[
+                 CartBadgeBtn(),
               ],
             ),
             body: _widgetInBody,

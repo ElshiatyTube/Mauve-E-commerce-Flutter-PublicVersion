@@ -1,156 +1,113 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutterecom/cubit/cart/cart_cubit.dart';
+import 'package:flutterecom/cubit/cart/cart_state.dart';
+import 'package:flutterecom/presentaion/views/cart_item.dart';
+import 'package:flutterecom/presentaion/views/default_btn.dart';
+import 'package:flutterecom/shared/constants/constants.dart';
 import 'package:flutterecom/shared/network/local/hive/employee.dart';
 import 'package:flutterecom/shared/style/colors.dart';
+import 'package:flutterecom/shared/style/icon_broken.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class CartScreen extends StatefulWidget {
+
+class CartScreen extends StatelessWidget{
   const CartScreen({Key? key}) : super(key: key);
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
-}
-
-
-class _CartScreenState extends State<CartScreen> {
-
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    Hive.box('employee').close();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hive'),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.add),
+    return BlocConsumer<CartCubit,CartStates>(
+      listener: (context,state){
+        if(state is AddToCartErrorState){
+        }
+      },
+      builder: (BuildContext context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Cart'),
+            leading: IconButton(
+              icon: Icon(
+                context.locale.toString() == 'en_EN'
+                    ? Iconly_Broken.Arrow___Left_2
+                    : Iconly_Broken.Arrow___Right_2,
+              ),
               onPressed: () {
-
-                addEmployee(UniqueKey().hashCode.toString(), Faker().person.firstName(), Faker().person.lastName(), Faker().internet.email());
-
-              /*  widget.dao.insertEmployee(employee).then((value) {
-                  // showSnakBar(scaffoldKey.currentState, 'Add Success');
-                  showToast(msg: 'Add Success!', state: ToastedStates.SUCCESS);
-                  setState(() {
-
-                  });
-                });*/
-              }),
-          IconButton(
-              icon: Icon(Icons.delete_forever),
-              onPressed: () {
-              setState(() {
-                Boxes.getEmployees().clear();
-              });
-              }),
-        ],
-      ),
-      body: ValueListenableBuilder(
-        valueListenable: Boxes.getEmployees().listenable(),
-        builder: (context,Box box, _) {
-          final transactions = box.values.toList().cast<Employee>();
-
-          return buildContent(transactions);
-        },
-      ),
-    );
-  }
-
-
-  //Add
-  Future<void> ?addEmployee(String id,String firstName,String lastName,String email) {
-    final employee = Employee()
-        ..firstName =firstName
-        ..id = id
-        ..lastName=lastName
-        ..email=email;
-
-    final box = Boxes.getEmployees();
-    box.put(id, employee).then((value) => print('Add Success'));
-    // box.add(employee).then((value) => print('Add Success'));
-
- //   final myBox = Boxes.getEmployees();
-  //  final myEmployeer = myBox.get(id);
-   // myBox.values;
-    //myBox.keys;
-  }
-
-  //Update
-  void updateEmployeee(Employee employee,String firstName,String lastName,String email ){
-
-    employee.firstName = firstName;
-    employee.lastName = lastName;
-    employee.email = email;
-
-    // final box = Boxes.getTransactions();
-    // box.put(transaction.key, transaction);
-
-    employee.save();
-
-  }
-
-  //Delete
-  void deleteEmployeee(Employee employee) {
-    // final box = Boxes.getTransactions();
-    // box.delete(transaction.key);
-
-    employee.delete();
-
-    //setState(() => transactions.remove(transaction));
-  }
-  Widget buildContent(transactions) {
-    return ListView.separated(
-      itemCount: transactions != null ? transactions.length : 0,
-      itemBuilder: (context, index) {
-        return Slidable(
-          child: ListTile(
-            title: Text(
-                '${transactions[index].firstName} ${transactions[index].lastName}'),
-            subtitle: Text('${transactions[index].email}'),
+                Navigator.pop(context);
+              },
+            ),
+            actions: [
+              IconButton(
+                  icon: const Icon(Iconly_Broken.Delete),
+                  onPressed: () {
+                    CartCubit.get(context).clearAllCartItems(context);
+                  }),
+            ],
           ),
-          actionPane: const SlidableDrawerActionPane(),
-          secondaryActions: [
-            IconSlideAction(
-              caption: 'Update',
-              color: defaultColor,
-              icon: Icons.update,
-              onTap: (){
-                final Employee updateEmployee = transactions[index];
-                updateEmployeee(updateEmployee, 'Watter', updateEmployee.lastName, 'yusuf4iaty@gmail.com');
+          body: ValueListenableBuilder(
+            valueListenable: Boxes.getEmployees().listenable(),
+            builder: (context,Box box, _) {
+              final cartItems = box.values.toList().cast<Employee>();
+              if(cartItems.isEmpty){
+                Future.delayed(const Duration(milliseconds: 50), () { //0.5 sec
+                  Navigator.pop(context);
+                });
+              }
 
-              },
-            ),
-            IconSlideAction(
-              caption: 'Delete',
-              color: Colors.red,
-              icon: Icons.remove_circle_outline,
-              onTap: (){
-                final deleteEmployee = transactions[index];
-
-                deleteEmployeee(deleteEmployee);
-
-              },
-            ),
-          ],
+              return Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListView.separated(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: cartItems.length,
+                        itemBuilder: (context, index) {
+                          return CartItem(cartItem: cartItems[index]);
+                        },
+                        separatorBuilder: (context,index) => const SizedBox(height: 10.0,),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: const [
+                              Text('Total'),
+                              Spacer(),
+                              Text('96 EGP',style: TextStyle(color: defaultColor),),
+                            ],
+                          ),
+                          const SizedBox(height: 20.0,),
+                          DefaultButtonView(
+                              function: (){},
+                            background: defaultColor,
+                              text: 'Checkout',
+                          radius: 12.0,)
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
         );
       },
-      separatorBuilder: (BuildContext context, int index) =>
-          Container(
-            width: double.infinity, height: 1.0, color: Colors.grey[300],
-          ),
     );
   }
+
 }
 
-class Boxes {
-  static Box<Employee> getEmployees() => Hive.box<Employee>('employee');
-}
+

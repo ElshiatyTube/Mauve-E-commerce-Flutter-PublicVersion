@@ -16,7 +16,7 @@ class ProductModel{
    List<ProductAddonModel>? addon;
 
    List<ProductAddonModel>? userSelectedAddon;
-   ProductSizeModel? userSelectedSize;
+   //ProductSizeModel? userSelectedSize;
    //List<ProductRateModel> rates=[];
    DocumentReference? reference;
 
@@ -65,6 +65,7 @@ class ProductModel{
        json['size'].forEach((v) {
          size!.add(ProductSizeModel.fromJson(v));
        });
+     //  userSelectedSize = ProductSizeModel(name: size![0].name, price: size![0].price, name_ar: size![0].name_ar);
      }
      if (json['addon'] != null) {
        addon = <ProductAddonModel>[];
@@ -79,7 +80,7 @@ class ProductModel{
        });
      }
 
-     userSelectedSize = json['userSelectedSize'] != null ? ProductSizeModel.fromJson(json['userSelectedSize']) : null;
+    // userSelectedSize = json['userSelectedSize'] != null ? ProductSizeModel.fromJson(json['userSelectedSize']) : null;
 
     /* if (json['rates'] != null) {
        rates = <ProductRateModel>[];
@@ -109,7 +110,7 @@ class ProductModel{
        'size':size!.map((e) => e.toMap()).toList(),
        'addon':addon!.map((e) => e.toMap()).toList(),
        'userSelectedAddon':userSelectedAddon!.map((e) => e.toMap()).toList(),
-       'userSelectedSize':userSelectedSize,
+      // 'userSelectedSize':userSelectedSize,
        //this.userSelectedSize!=ProductSizeModel('',0,'') ?  'userSelectedSize':userSelectedSize.toMap() : null,
        //'rates':rates.map((e) => e.toMap()).toList(),
 

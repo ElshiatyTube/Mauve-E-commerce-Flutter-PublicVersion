@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterecom/cubit/auth/auth_cubit.dart';
+import 'package:flutterecom/cubit/cart/cart_cubit.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
 import 'package:flutterecom/cubit/product_details/product_details_cubit.dart';
 import 'package:flutterecom/data/models/product_model.dart';
@@ -69,6 +70,10 @@ class AppRouter {
       case userAddressPath:
         return MaterialPageRoute(
           builder:(_) =>  const UserAddressScreen(),
+        );
+      case cartPath:
+        return MaterialPageRoute(
+          builder:(_) =>  const CartScreen(),
         );
 
     }

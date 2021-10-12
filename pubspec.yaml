@@ -41,7 +41,9 @@ dependencies:
   firebase_auth: ^3.0.1
   google_sign_in: ^5.0.3
   firestore_cache: any
+  firebase_storage: ^10.0.5
   conditional_builder_null_safety: ^0.0.6
+  image_picker: ^0.8.0+3
   cloud_firestore: any
   shared_preferences: ^2.0.5
   smooth_page_indicator: ^1.0.0+2

@@ -82,7 +82,6 @@ class CartCubit extends Cubit<CartStates>{
 
   void clearAllCartItems(BuildContext context){
     Boxes.getEmployees().clear().then((value) {
-     //Navigator.pop(context);
       emit(ClearAllCartItemsState());
     });
   }

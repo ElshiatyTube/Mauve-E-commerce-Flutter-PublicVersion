@@ -8,8 +8,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterecom/cubit/auth/auth_cubit.dart';
+import 'package:flutterecom/cubit/auth/auth_state.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_state.dart';
+import 'package:flutterecom/presentaion/dialogs/update_account_info_dialog.dart';
 import 'package:flutterecom/shared/commponents/commopnents.dart';
 import 'package:flutterecom/shared/constants/constants.dart';
 import 'package:flutterecom/shared/images/images_svg.dart';
@@ -36,22 +38,38 @@ class _AccountScreenState extends State<AccountScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeLayoutCubit, HomeLayoutStates>(
       builder: (context, state) {
-        return SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start, //About,chat,contact
-              children: [
-                _userInfoCard(),
-                const SizedBox(height: 12.0,),
-                _aboutAndContactAndChatCard(),
-                const SizedBox(height: 12.0,),
-                _languagesCar(),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start, //About,chat,contact
+                    children: [
+                      _userInfoCard(),
+                      const SizedBox(height: 12.0,),
+                      _aboutAndContactAndChatCard(),
+                      const SizedBox(height: 12.0,),
+                      _languagesCar(),
 
-              ],
+                    ],
+                  ),
+                ),
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15.0),
+              child:  InkWell(
+                  child: const Text('Sign out',style: TextStyle(color: defaultColor),),
+                  onTap: (){
+                      AuthCubit.get(context).signOut(context);
+                  },
+              ),
+            ),
+          ],
         );
       },
     );
@@ -60,66 +78,93 @@ class _AccountScreenState extends State<AccountScreen> {
   Widget _userInfoCard()=>ConditionalBuilder(
     condition: AuthCubit.get(context).userModel.uId !='',
     builder: (context){
-      return Container(
-        padding: const EdgeInsets.all(12.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: Colors.white,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                ClipRRect(
-                  child: CachedNetworkImage(
-                    fit: BoxFit.cover,
-                    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/flutterecom-b7f81.appspot.com/o/mechanic-changing-tires-car-service_1303-26902.jpg?alt=media&token=5148c52f-0b27-4a04-ab5b-01c72325ac99',
-                    height: 75.0,
-                    width: 75.0,
-                  ),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                const SizedBox(width: 10.0,),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('${HomeLayoutCubit.get(context).welcomeText}, ${AuthCubit.get(context).userModel.name}',maxLines: 2,overflow: TextOverflow.ellipsis,style: const TextStyle(fontSize: 15.0),),
-                      const SizedBox(height: 4.0,),
-                      AuthCubit.get(context).userModel.email != '' ?  Text(AuthCubit.get(context).userModel.email,style: Theme.of(context).textTheme.caption,maxLines: 1,overflow: TextOverflow.ellipsis,) : Container(),
-                      const SizedBox(height: 2.0,),
-                      Text(AuthCubit.get(context).userModel.phone,style: Theme.of(context).textTheme.caption,maxLines: 1,overflow: TextOverflow.ellipsis,),
 
-                    ],
-                  ),
-                ),
-                const Icon(Iconly_Broken.Edit,color: MyColors.iconsColor,),
-              ],
-            ),
-            const SizedBox(height: 25.0,),
-            InkWell(
-              onTap: (){
-                Navigator.pushNamed(context, userAddressPath);
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    child:const Icon(Iconly_Broken.Location,color: MyColors.iconsColor,),decoration:BoxDecoration(
-                    color: MyColors.iconsBgColor,
-                    borderRadius:  BorderRadius.circular(5.0),
-                  ),padding: const EdgeInsets.all(5.0),
-                  ),
-                  const SizedBox(width: 5.0,),
-                  const Text('My Address'),
-                  const Spacer(),
-                  const Icon(Icons.keyboard_arrow_right,color: Colors.black54,),
-                ],
-              ),
-            ),
-          ],
-        ),
+      return BlocBuilder<AuthCubit,AuthStates>(
+       builder: (context,state){
+         return  Container(
+           padding: const EdgeInsets.all(12.0),
+           decoration: BoxDecoration(
+             borderRadius: BorderRadius.circular(10.0),
+             color: Colors.white,
+           ),
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: [
+               Row(
+                 children: [
+                   ClipRRect(
+                     child: CachedNetworkImage(
+                       fit: BoxFit.cover,
+                       imageUrl: AuthCubit.get(context).userModel.image,
+                       height: 75.0,
+                       width: 75.0,
+                     ),
+                     borderRadius: BorderRadius.circular(8.0),
+                   ),
+                   const SizedBox(width: 10.0,),
+                   Expanded(
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+                         Text('${HomeLayoutCubit.get(context).welcomeText}, ${AuthCubit.get(context).userModel.name}',maxLines: 2,overflow: TextOverflow.ellipsis,style: const TextStyle(fontSize: 15.0),),
+                         const SizedBox(height: 4.0,),
+                         AuthCubit.get(context).userModel.email != '' ?  Text(AuthCubit.get(context).userModel.email,style: Theme.of(context).textTheme.caption,maxLines: 1,overflow: TextOverflow.ellipsis,) : Container(),
+                         const SizedBox(height: 2.0,),
+                         Text(AuthCubit.get(context).userModel.phone,style: Theme.of(context).textTheme.caption,maxLines: 1,overflow: TextOverflow.ellipsis,),
+
+                       ],
+                     ),
+                   ),
+                   InkWell(child: Container(
+                       padding: const EdgeInsets.all(5.0),
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(5.0),
+                       color: MyColors.iconsBgColor,
+                     ),
+                       child: const Icon(Iconly_Broken.Edit,color: defaultColor,)
+                   ),onTap: (){
+                     showDialog(
+                         barrierDismissible: true,
+                         context: context,
+                         builder: (BuildContext context){
+                           return Dialog(
+                             insetPadding: const EdgeInsets.all(15),
+                             shape: const RoundedRectangleBorder(
+                                 borderRadius:
+                                 BorderRadius.all(
+                                     Radius.circular(10.0))),
+                             child: UpdateAccountInfo(userModel: AuthCubit.get(context).userModel),
+                           );
+                         }
+                     );
+                   },),
+                 ],
+               ),
+               const SizedBox(height: 25.0,),
+               InkWell(
+                 onTap: (){
+                   Navigator.pushNamed(context, userAddressPath);
+                 },
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.start,
+                   children: [
+                     Container(
+                       child:const Icon(Iconly_Broken.Location,color: MyColors.iconsColor,),decoration:BoxDecoration(
+                       color: MyColors.iconsBgColor,
+                       borderRadius:  BorderRadius.circular(5.0),
+                     ),padding: const EdgeInsets.all(5.0),
+                     ),
+                     const SizedBox(width: 5.0,),
+                     const Text('My Address'),
+                     const Spacer(),
+                     const Icon(Icons.keyboard_arrow_right,color: Colors.black54,),
+                   ],
+                 ),
+               ),
+             ],
+           ),
+         );
+       },
       );
     },
     fallback: (_)=>Container(),

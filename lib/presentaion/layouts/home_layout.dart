@@ -36,7 +36,10 @@ class HomeLayout extends StatelessWidget {
 
    final searchController = TextEditingController();
    Widget _widgetInBody = HomeScreen();
-  @override
+   DateTime? currentBackPressTime;
+
+
+   @override
   Widget build(BuildContext context) {
     var cubit = HomeLayoutCubit.get(context);
 
@@ -97,7 +100,8 @@ class HomeLayout extends StatelessWidget {
                  CartBadgeBtn(),
               ],
             ),
-            body: _widgetInBody,
+            body: WillPopScope(onWillPop: onWillPop,
+            child: _widgetInBody),
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               showUnselectedLabels: false,
@@ -150,5 +154,15 @@ class HomeLayout extends StatelessWidget {
 
     );
   }
+   Future<bool> onWillPop() {
+     DateTime now = DateTime.now();
+     if (currentBackPressTime == null ||
+         now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
+       currentBackPressTime = now;
+       showToast(msg: 'Press again to exit', state: ToastedStates.WARNING);
+       return Future.value(false);
+     }
+     return Future.value(true);
+   }
 }
 

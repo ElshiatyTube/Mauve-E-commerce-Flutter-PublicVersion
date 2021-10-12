@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/src/public_ext.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterecom/cubit/auth/auth_cubit.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_state.dart';
 import 'package:flutterecom/presentaion/layouts/home_layout.dart';
@@ -44,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
    var cubit = HomeLayoutCubit.get(context);
-   print('This is home Screen');
+
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Container(

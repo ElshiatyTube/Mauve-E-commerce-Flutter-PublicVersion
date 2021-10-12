@@ -87,6 +87,28 @@ class GoogleSingUpFailed extends AuthStates {
   GoogleSingUpFailed(this.error);
 }
 
+//Update User Info
+class UserInfoUpdateLoading extends AuthStates {}
+class UserInfoUpdateSuccess extends AuthStates {}
+class UserInfoUpdateFailed extends AuthStates {
+  final String error;
+
+  UserInfoUpdateFailed(this.error);
+}
+
+//Pick Image
+class ProfileImagePickedSuccessState extends AuthStates {}
+class ProfileImagePickedFailedState extends AuthStates {}
+
+class UserImageUpdateLoadingState extends AuthStates {}
+class SocialUploadProfileImageFailedState extends AuthStates {}
+class UploadProfileInFirebaseSuccessState extends AuthStates {}
+
+
+
+
+
+
 
 
 

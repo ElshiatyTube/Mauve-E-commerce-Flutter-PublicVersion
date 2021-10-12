@@ -7,8 +7,10 @@ class UserModel
   late String name;
   late String phone;
   late String email;
+  late String image;
   late List<AddressModel> address=[];
   late num  balance;
+  late bool emailBol,phoneBol;
 
 
   UserModel({required this.uId,required this.name,required this.phone,required this.email,required this.address,required this.balance});
@@ -26,7 +28,9 @@ class UserModel
        });
      }
      balance= json['balance'];
-
+     emailBol= json['emailBol'];
+     phoneBol= json['phoneBol'];
+     image= json['image'];
    }
   Map<String,dynamic> toMap()
   {
@@ -37,6 +41,9 @@ class UserModel
       'email':email,
       'address':address.map((e) => e.toMap()).toList(),
       'balance':balance,
+      'emailBol':emailBol,
+      'phoneBol':phoneBol,
+      'image':image,
     };
   }
 

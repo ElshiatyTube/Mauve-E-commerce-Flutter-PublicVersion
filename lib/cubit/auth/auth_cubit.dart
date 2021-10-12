@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,9 +19,11 @@ import 'package:flutterecom/shared/commponents/commopnents.dart';
 import 'package:flutterecom/shared/constants/constants.dart';
 import 'package:flutterecom/shared/network/local/cache_helper.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
 import 'package:one_context/one_context.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 import 'auth_state.dart';
 
@@ -336,6 +339,70 @@ class AuthCubit extends Cubit<AuthStates> {
 
   }
 
+  //Update User Info
+  void updateUserData({required String name,required String phone,required String email}) {
+    emit(UserInfoUpdateLoading());
+
+    Map<String, dynamic> update = {};
+    update['name'] = name;
+    update['phone'] = phone;
+    update['email'] = email;
+
+    FirebaseFirestore.instance
+        .collection(USER_COLLECTION)
+        .doc(userModel.uId)
+        .update(update).then((value) {
+      userModel.phone = phone;
+      userModel.name = name;
+      userModel.email = email;
+      emit(UserInfoUpdateSuccess());
+    }).catchError((onError){
+      emit(UserInfoUpdateFailed(onError.toString()));
+    });
+  }
+
+  File? profileImage ;
+  final picker = ImagePicker();
+
+  Future pickProfileImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      profileImage = File(pickedFile.path);
+      emit(ProfileImagePickedSuccessState());
+    } else {
+      print('No image selected.');
+      emit(ProfileImagePickedFailedState());
+    }
+  }
+  void uploadProfileImage() {
+    emit(UserImageUpdateLoadingState());
+
+    firebase_storage.FirebaseStorage.instance
+        .ref()
+        .child('usersImages/${Uri.file(profileImage!.path).pathSegments.last}')
+        .putFile(profileImage!)
+        .then((value) {
+      value.ref.getDownloadURL().then((imageUrl) {
+        Map<String, dynamic> updateImage = {};
+        updateImage['image'] = imageUrl;
+        FirebaseFirestore.instance
+            .collection(USER_COLLECTION)
+            .doc(userModel.uId)
+            .update(updateImage).then((value){
+          userModel.image = imageUrl;
+        emit(UploadProfileInFirebaseSuccessState());
+        }).catchError((onError){
+          emit(SocialUploadProfileImageFailedState());
+        });
+        print(value);
+      }).catchError((onError) {
+        emit(SocialUploadProfileImageFailedState());
+      });
+    }).catchError((onError) {
+      emit(SocialUploadProfileImageFailedState());
+    });
+  }
 
 
 

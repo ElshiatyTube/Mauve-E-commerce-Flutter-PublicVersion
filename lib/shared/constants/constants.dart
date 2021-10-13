@@ -10,6 +10,8 @@ const String registerPath = '/register';
 const String homeLayoutPath = '/home_layout';
 const String productDetailsPath = '/product_details';
 const String cartPath = '/cart';
+const String contactPath = '/contact';
+
 
 const String userAddressPath = '/user_address';
 const String chatPath = '/chat';
@@ -37,8 +39,11 @@ final String SHIPPER_ORDERS_COLLECTION ='ShippingOrder';
 final String INFO_COLLECTION ='Info';
 final String PROMOS_COLLECTION ='Promos';
 final String INVITAIONSCODES_COLLECTION ='InvitationsCodes';
+final String MESSAGES_COLLECTION ='Messages';
 
 
+
+final String GOOGLE_MAP_API_KEY = 'AIzaSyDO4rN4fQCdQSpsKLDvCs_Vbn6RoYkeEfU';
 
 class Boxes {
   static Box<Employee> getEmployees() => Hive.box<Employee>('employee');

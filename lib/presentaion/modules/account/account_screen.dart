@@ -193,115 +193,45 @@ class _AccountScreenState extends State<AccountScreen> {
           ),
           children: [
             Padding(
-              padding: const EdgeInsets.all(
-                10.0,
+              padding: const EdgeInsets.only(
+                  left: 25.0,right: 25.0
               ),
-              child: Text(
-                context.locale.toString() == 'en_EN'? HomeLayoutCubit.get(context).about : HomeLayoutCubit.get(context).aboutAr,
+              child: Column(
+                children: [
+                  Text(
+                    context.locale.toString() == 'en_EN'? HomeLayoutCubit.get(context).about : HomeLayoutCubit.get(context).aboutAr,
+                  ),
+                  const SizedBox(height: 5.0,),
+                ],
               ),
             ),
           ],
         ),
-        ExpansionTile(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                child:const Icon(Iconly_Broken.Calling,color: MyColors.iconsColor,),decoration:BoxDecoration(
-                color: MyColors.iconsBgColor,
-                borderRadius:  BorderRadius.circular(5.0),
-              ),padding: const EdgeInsets.all(5.0),
-              ),
-              const SizedBox(width: 5.0,),
-              const Text('Contact Us'),
-            ],
-          ),
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+
+        InkWell(
+          onTap: (){
+            Navigator.pushNamed(context, contactPath);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                InkWell(
-                  onTap: (){
-                    HomeLayoutCubit.get(context).callNumber();
-                  },
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: MyColors.scaffoldBackgroundColorMain,
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(10.0)
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              const Icon(Iconly_Broken.Call,size: 18.0,color: Colors.red,),
-                              const SizedBox(width: 5.0,),
-                              Text(
-                                'Hotline'.tr(),
-                                style: TextStyle(
-                                  fontSize: 14.0, fontWeight: FontWeight.normal,color: Colors.black.withOpacity(0.6),),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            HomeLayoutCubit.get(context).hotline,
-                            style: TextStyle(
-                              fontSize: 13.0, fontWeight: FontWeight.normal,color: Colors.black.withOpacity(0.6),),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                Container(
+                  child:const Icon(Iconly_Broken.Calling,color: MyColors.iconsColor,),decoration:BoxDecoration(
+                  color: MyColors.iconsBgColor,
+                  borderRadius:  BorderRadius.circular(5.0),
+                ),padding: const EdgeInsets.all(5.0),
                 ),
-                const SizedBox(width: 15.0,),
-                InkWell(
-                  onTap: (){
-                    HomeLayoutCubit.get(context).whatsappLaunch();
-                  },
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: MyColors.scaffoldBackgroundColorMain,
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(10.0)
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              whatsappIcon,
-                              const SizedBox(width: 5.0,),
-                              Text(
-                                'Whatsapp'.tr(),
-                                style: TextStyle(
-                                  fontSize: 14.0, fontWeight: FontWeight.normal,color: Colors.black.withOpacity(0.6),),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            HomeLayoutCubit.get(context).whatsapp,
-                            style: TextStyle(
-                              fontSize: 14.0, fontWeight: FontWeight.normal,color: Colors.black.withOpacity(0.6),),
-                          )
-
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-
+                const SizedBox(width: 5.0,),
+                const Text('Contact Us'),
+                const Spacer(),
+                const Icon(Icons.keyboard_arrow_right,color: Colors.black54,),
               ],
             ),
-            const SizedBox(height: 15.0,),
-          ],
+          ),
         ),
+
         InkWell(
           onTap: (){
             Navigator.pushNamed(context, chatPath);

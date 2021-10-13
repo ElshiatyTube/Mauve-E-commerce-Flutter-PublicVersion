@@ -75,6 +75,17 @@ class GetStoreInfoStateSuccess extends HomeLayoutInitState{
 }
 
 
+//Contact Screen
+class UserSubmitContactMessageLoadingState extends HomeLayoutInitState{}
+class UserSubmitContactMessageSuccessState extends HomeLayoutInitState{}
+class UserSubmitContactMessageErrorState extends HomeLayoutInitState{
+  final String error;
+
+  UserSubmitContactMessageErrorState(this.error);
+}
+
+
+
 
 
 

@@ -6,10 +6,12 @@ import 'package:flutterecom/cubit/auth/auth_cubit.dart';
 import 'package:flutterecom/cubit/cart/cart_cubit.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
 import 'package:flutterecom/cubit/product_details/product_details_cubit.dart';
+import 'package:flutterecom/cubit/user_address/user_address_cubit.dart';
 import 'package:flutterecom/data/models/product_model.dart';
 import 'package:flutterecom/presentaion/layouts/home_layout.dart';
 import 'package:flutterecom/presentaion/modules/cart/cart_screen.dart';
 import 'package:flutterecom/presentaion/modules/chat/chat_screen.dart';
+import 'package:flutterecom/presentaion/modules/contact/contact_screen.dart';
 import 'package:flutterecom/presentaion/modules/login/login_screen.dart';
 import 'package:flutterecom/presentaion/modules/onboard/onboard_screen.dart';
 import 'package:flutterecom/presentaion/modules/otp/otp_screen.dart';
@@ -75,6 +77,11 @@ class AppRouter {
         return MaterialPageRoute(
           builder:(_) =>  const CartScreen(),
         );
+      case contactPath:
+        return MaterialPageRoute(
+          builder:(_) =>  ContactScreen(),
+        );
+
 
     }
   }

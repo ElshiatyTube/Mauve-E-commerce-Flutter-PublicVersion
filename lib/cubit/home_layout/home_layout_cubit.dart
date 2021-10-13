@@ -11,6 +11,7 @@ import 'package:flutterecom/cubit/auth/auth_cubit.dart';
 import 'package:flutterecom/data/api/category_api.dart';
 import 'package:flutterecom/data/api/products_api.dart';
 import 'package:flutterecom/data/models/category_model.dart';
+import 'package:flutterecom/data/models/messages_model.dart';
 import 'package:flutterecom/data/models/product_model.dart';
 import 'package:flutterecom/data/models/token_model.dart';
 import 'package:flutterecom/data/models/user_model.dart';
@@ -250,6 +251,21 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
     } else {
       throw 'Could not launch whatsapp $whatsapp';
     }
+  }
+
+  //Contact Screen
+  void submitUserMessage({required String uid,required String name, required String phone,required String message}) {
+    emit(UserSubmitContactMessageLoadingState());
+    MessagesModel model = MessagesModel(uid, name, phone, message, DateTime.now().millisecondsSinceEpoch);
+    FirebaseFirestore.instance
+        .collection(MESSAGES_COLLECTION)
+        .doc(uid)
+        .set(model.toMap()).then((value) {
+          emit(UserSubmitContactMessageSuccessState());
+    }).catchError((onError){
+      print('ErrorInfo: ${onError.toString()}');
+      emit(UserSubmitContactMessageErrorState(onError.toString()));
+    });
   }
 
 

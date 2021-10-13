@@ -7,6 +7,13 @@ class Validator {
     }
     return null;
   }
+  static String? validateEmpty(String? value) {
+    if(value!.isEmpty){
+      return "Can't be empty";
+    }
+    return null;
+  }
+
 
   static String? validateMobile(String? value) {
     String pattern = r'(^[0-9]*$)';

@@ -19,12 +19,17 @@
         </intent>
     </queries>
 
+
+
     <application
         android:name=".Application"
         android:label="FlutterEcom"
         android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDO4rN4fQCdQSpsKLDvCs_Vbn6RoYkeEfU"/>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"

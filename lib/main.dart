@@ -25,6 +25,7 @@ import 'cubit/check_connection/check_connection_cubit.dart';
 import 'cubit/check_connection/check_connection_state.dart';
 import 'cubit/home_layout/home_layout_cubit.dart';
 import 'cubit/product_details/product_details_cubit.dart';
+import 'cubit/user_address/user_address_cubit.dart';
 
 
 Future<void> main() async {
@@ -42,7 +43,7 @@ Future<void> main() async {
 
 
 
-  /*runApp(DevicePreview(
+/*  runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (BuildContext context)=>EasyLocalization(
         path: 'resources/languages',
@@ -70,7 +71,7 @@ class MyApp extends StatelessWidget {
 
     ThemeData lightTheme = ThemeData(
       buttonTheme: const ButtonThemeData(
-        buttonColor: Colors.black,
+        buttonColor: defaultColor,
         textTheme: ButtonTextTheme.primary,
       ),
       primarySwatch: defaultColor,
@@ -127,6 +128,7 @@ class MyApp extends StatelessWidget {
        BlocProvider(create: (_) => AuthCubit(),),
        BlocProvider(create: (_)=> HomeLayoutCubit(_)..initFirebaseBackgroundFCM(_)..getBackgroundFcmData()..getInfo()..getCategoryList(),),
        BlocProvider(create: (_) => CartCubit(),),
+       BlocProvider(create: (_) => UserAddressCubit(),),
      ],
       child: MultiBlocListener(
         listeners: [

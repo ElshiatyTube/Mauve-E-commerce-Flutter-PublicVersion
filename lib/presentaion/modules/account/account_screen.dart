@@ -263,10 +263,9 @@ class _AccountScreenState extends State<AccountScreen> {
 
   Widget _languagesCar() => InkWell(
     onTap: (){
-      //If you want to change language
-     /* EasyLocalization.of(context)!.setLocale( context.locale.toString() == 'en_EN' ? const Locale('ar', 'AR') : const Locale('en', 'EN')).then((_) {
+      EasyLocalization.of(context)!.setLocale( context.locale.toString() == 'en_EN' ? const Locale('ar', 'AR') : const Locale('en', 'EN')).then((_) {
       //  OneNotification.hardReloadRoot(context);
-      });*/
+      });
     },
     child: Container(
       decoration: BoxDecoration(

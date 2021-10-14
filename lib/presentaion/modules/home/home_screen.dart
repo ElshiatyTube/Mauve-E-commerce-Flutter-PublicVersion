@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
 
+    //Static UI, You Can make it dynamic with the same fetch data approach I use in this project.
     offers.add(OfferMode(
         '123',
         'https://firebasestorage.googleapis.com/v0/b/flutterecom-b7f81.appspot.com/o/modern-cars-are-studio-room-3d-illustration-3d-render_37416-450.jpg?alt=media&token=7c2e03ad-daa9-4295-b618-3c6b3cfd36d6',
@@ -168,6 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 10.0,
             ),
+            //Static UI, You Can make it dynamic with the same fetch data approach I use in this project
             Container(
               padding: const EdgeInsets.all(5.0),
               decoration: BoxDecoration(

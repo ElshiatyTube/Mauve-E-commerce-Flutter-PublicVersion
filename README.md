@@ -12,6 +12,7 @@ Red Tires| Flutter (Demo / Under Development)
 *Hive DB for Local Cart system
 *Firebase Firestore (As a Rest API)
 *Dynamic FCM
+*Realtime Chat
 *Android Native fully functional control panel
 
 ![image](https://mostaql.hsoubcdn.com/uploads/thumbnails/372144/615a0c8bb98a8/0732782c-bd50-45dd-ad76-d6b64e7399ca.jpg)

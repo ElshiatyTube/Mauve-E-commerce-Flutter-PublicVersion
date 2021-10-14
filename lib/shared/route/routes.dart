@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterecom/cubit/auth/auth_cubit.dart';
 import 'package:flutterecom/cubit/cart/cart_cubit.dart';
+import 'package:flutterecom/cubit/chat/chat_cubit.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
 import 'package:flutterecom/cubit/product_details/product_details_cubit.dart';
 import 'package:flutterecom/cubit/user_address/user_address_cubit.dart';
@@ -67,7 +68,7 @@ class AppRouter {
         );
       case chatPath:
         return MaterialPageRoute(
-          builder:(_) =>  const ChatScreen(),
+          builder:(_) =>  BlocProvider(child: ChatScreen(),create: (_)=>ChatCubit(),),
         );
       case userAddressPath:
         return MaterialPageRoute(

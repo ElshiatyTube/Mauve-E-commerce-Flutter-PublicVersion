@@ -41,6 +41,10 @@ final String PROMOS_COLLECTION ='Promos';
 final String INVITAIONSCODES_COLLECTION ='InvitationsCodes';
 final String MESSAGES_COLLECTION ='Messages';
 
+final String CHAT_REF = "Chat";
+final String KEY_ROOM_ID = "CHAT_ROOM_ID";
+final String KEY_CHAT_USER = "CHAT_SENDER";
+final String CAHT_DETAIL_REF = "ChatDetail";
 
 
 final String GOOGLE_MAP_API_KEY = 'AIzaSyDO4rN4fQCdQSpsKLDvCs_Vbn6RoYkeEfU';

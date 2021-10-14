@@ -19,39 +19,33 @@ class UserAddressScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Container(
-            decoration: BoxDecoration(
-              color: MyColors.iconsBgColor,
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
-                  onPrimary: Colors.transparent,
-                  shadowColor: Colors.transparent,
-                  onSurface: Colors.transparent,
-                  elevation: 0.0,
-                  padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                ),
-                onPressed: () {
-                  UserAddressCubit.get(context).navigateToPlacePicker(context: context);
-                },
-                child: Row(
-                  children: const [
-                    Icon(
-                      Iconly_Broken.Plus,
-                      color: defaultColor,
-                    ),
-                    SizedBox(
-                      width: 3.0,
-                    ),
-                    Text(
-                      'New Address',
-                      style: TextStyle(color: defaultColor, fontSize: 13.0),
-                    ),
-                  ],
-                )),
-          ),
+          ElevatedButton( //I:\DexkTop Old lap\5amsat\flutter_ecom
+              style: ElevatedButton.styleFrom(
+                primary: Colors.transparent,
+                onPrimary: Colors.transparent,
+                shadowColor: Colors.transparent,
+                onSurface: Colors.transparent,
+                elevation: 0.0,
+                padding: const EdgeInsets.symmetric(horizontal: 6.0),
+              ),
+              onPressed: () {
+                UserAddressCubit.get(context).navigateToPlacePicker(context: context);
+              },
+              child: Row(
+                children: const [
+                  Icon(
+                    Iconly_Broken.Plus,
+                    color: defaultColor,
+                  ),
+                  SizedBox(
+                    width: 3.0,
+                  ),
+                  Text(
+                    'New Address',
+                    style: TextStyle(color: defaultColor, fontSize: 13.0),
+                  ),
+                ],
+              )),
         ],
         leading: IconButton(
           icon: Icon(

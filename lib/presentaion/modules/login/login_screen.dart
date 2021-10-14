@@ -59,6 +59,7 @@ class LoginScreen extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
+          backgroundColor: MyColors.scaffoldBackgroundColorMain,
           key: scaffoldKey,
           resizeToAvoidBottomInset: true,
           appBar: AppBar(
@@ -71,167 +72,166 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'lang'.tr(),
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: defaultColor),
                   ),
                 ),
               ),
             ],
-            backgroundColor: Colors.black,
+            backgroundColor:  MyColors.scaffoldBackgroundColorMain,
             elevation: 0,
           ),
           body: SingleChildScrollView(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(0),
-              ),
-              child: Column(
-                children: [
-                  Container(
-                      color: Colors.black,
-                      child: Image.asset(
-                        'assets/images/lav.png',
-                        fit: BoxFit.cover,
-                        height: MediaQuery.of(context).size.height / 2.5,
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                Container(
+                    color:  MyColors.scaffoldBackgroundColorMain,
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      fit: BoxFit.cover,
+                    )),
+                const SizedBox(height: 25.0,),
+                Container(
+                  padding: const EdgeInsets.all(14.0),
+                  decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20.0),
+                        topRight: Radius.circular(20.0),
                       )),
-                  Container(
-                    padding: const EdgeInsets.all(14.0),
-                    decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(17.0),
-                          topRight: Radius.circular(17.0),
-                        )),
-                    child: Form(
-                      key: formKey,
-                      child: SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'loginToEnjoy_txt'.tr(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1!
-                                      .copyWith(
-                                        color: Colors.black,
-                                      ),
-                                ),
-                                InkWell(
-                                    onTap: () {
-                                     Navigator.pushNamedAndRemoveUntil(
-                                         context, homeLayoutPath, (route) => false,);
-                                    },
-                                    child: Text(
-                                      'Skip'.tr(),
-                                      style:
-                                          const TextStyle(color: defaultColor),
-                                    )),
-                              ],
+                            Text(
+                              'loginToEnjoy_txt'.tr(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1!
+                                  .copyWith(
+                                    color: Colors.black,
+                                  ),
                             ),
-                           state is GoogleSingUpLoading ?  defaultLinearProgressIndicator(): Container(),
-                            const SizedBox(
-                              height: 10.0,
-                            ),
-                            DefaultFormField(
-                              controller: emailController,
-                              textInputType: TextInputType.emailAddress,
-                              validator: Validator.validateEmail,
-                              label: 'enter_email'.tr(),
-                              prefixIcon: Iconly_Broken.Message,
-                            ),
-                            const SizedBox(
-                              height: 10.0,
-                            ),
-                            DefaultFormField(
-                                controller: passController,
-                                textInputType: TextInputType.visiblePassword,
-                                isPassword: cubit.isPass,
-                                onSubmit: (value) {
-                                  if (formKey.currentState!.validate()) {
-                                    cubit.uerLogin(
-                                      email: emailController.text,
-                                      password: passController.text,
-                                    );
-                                  }
+                            InkWell(
+                                onTap: () {
+                                 Navigator.pushNamedAndRemoveUntil(
+                                     context, homeLayoutPath, (route) => false,);
                                 },
-                                validator: Validator.validatePassword,
-                                label: 'password'.tr(),
-                                prefixIcon: Iconly_Broken.Password,
-                                suffixIcon: cubit.suffix,
-                                suffixIconPressed: () {
-                                  cubit.changePassVisibility();
+                                child: Text(
+                                  'Skip'.tr(),
+                                  style:
+                                      const TextStyle(color: defaultColor),
+                                )),
+                          ],
+                        ),
+                       state is GoogleSingUpLoading ?  defaultLinearProgressIndicator(): Container(),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        DefaultFormField(
+                          controller: emailController,
+                          textInputType: TextInputType.emailAddress,
+                          validator: Validator.validateEmail,
+                          label: 'enter_email'.tr(),
+                          prefixIcon: Iconly_Broken.Message,
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        DefaultFormField(
+                            controller: passController,
+                            textInputType: TextInputType.visiblePassword,
+                            isPassword: cubit.isPass,
+                            onSubmit: (value) {
+                              if (formKey.currentState!.validate()) {
+                                cubit.uerLogin(
+                                  email: emailController.text,
+                                  password: passController.text,
+                                );
+                              }
+                            },
+                            validator: Validator.validatePassword,
+                            label: 'password'.tr(),
+                            prefixIcon: Iconly_Broken.Password,
+                            suffixIcon: cubit.suffix,
+                            suffixIconPressed: () {
+                              cubit.changePassVisibility();
+                            }),
+                        const SizedBox(
+                          height: 25.0,
+                        ),
+                        ConditionalBuilder(
+                          condition: state is! LoginLoadingState,
+                          builder: (BuildContext context) => DefaultButtonView(
+                              function: () {
+                                if (formKey.currentState!.validate()) {
+                                  cubit.uerLogin(
+                                    email: emailController.text,
+                                    password: passController.text,
+                                  );
+                                }
+                              },
+                              text: 'LOGIN_txt'.tr(),
+                              isUpperCase: true,
+                              background: defaultColor,
+                              radius: 5.0),
+                          fallback: (BuildContext context) => const Center(
+                              child: CircularProgressIndicator()),
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('dont_have_account'.tr()),
+                            DefaultTextButtonView(
+                                textStyle: const TextStyle(fontSize: 15.0),
+                                text: 'register'.tr(),
+                                function: () {
+                                  Navigator.pushNamed(context, registerPath,arguments: '');
                                 }),
-                            const SizedBox(
-                              height: 10.0,
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Align(child: Text(' ـــــــــــــــ${'or_ling_by'.tr()}ـــــــــــــــ '),alignment: Alignment.center,),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: ElevatedButtonIconView(
+                                elevation: 0.5,
+                                bgColor: Colors.white,
+                                  textColor: Colors.black,
+                                  icon: const Icon(Iconly_Broken.Call,color: defaultColor,),
+                                  text: 'sing_in_by_phone'.tr(),
+                                  function: () => showBottomSheetForReviews(scaffoldKey,context,cubit)
+                              ),
                             ),
-                            ConditionalBuilder(
-                              condition: state is! LoginLoadingState,
-                              builder: (BuildContext context) => DefaultButtonView(
-                                  function: () {
-                                    if (formKey.currentState!.validate()) {
-                                      cubit.uerLogin(
-                                        email: emailController.text,
-                                        password: passController.text,
-                                      );
-                                    }
-                                  },
-                                  text: 'LOGIN_txt'.tr(),
-                                  isUpperCase: true,
-                                  radius: 5.0),
-                              fallback: (BuildContext context) => const Center(
-                                  child: CircularProgressIndicator()),
-                            ),
-                            const SizedBox(
-                              height: 6.0,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('dont_have_account'.tr()),
-                                DefaultTextButtonView(
-                                    textStyle: const TextStyle(fontSize: 15.0),
-                                    text: 'register'.tr(),
-                                    function: () {
-                                      Navigator.pushNamed(context, registerPath,arguments: '');
-                                    }),
-                              ],
-                            ),
-                            Align(child: Text(' ـــــــــــــــ${'or_ling_by'.tr()}ـــــــــــــــ '),alignment: Alignment.center,),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: ElevatedButtonIconView(
-                                    elevation: 0.5,
-                                    bgColor: Colors.white,
-                                      textColor: Colors.black,
-                                      icon: const Icon(Iconly_Broken.Call,color: defaultColor,),
-                                      text: 'sing_in_by_phone'.tr(),
-                                      function: () => showBottomSheetForReviews(scaffoldKey,context,cubit)
-                                  ),
-                                ),
-                                Expanded(
-                                  child: ElevatedButtonIconView(
-                                      elevation: 0.5,
-                                      bgColor: Colors.white,
-                                      textColor: Colors.black,
-                                      text: 'google_sing_in'.tr(),
-                                      function: () => _loginGoogle(context,cubit), icon: googleIcon,
-                                  ),
-                                ),
-                              ],
+                            Expanded(
+                              child: ElevatedButtonIconView(
+                                  elevation: 0.5,
+                                  bgColor: Colors.white,
+                                  textColor: Colors.black,
+                                  text: 'google_sing_in'.tr(),
+                                  function: () => _loginGoogle(context,cubit), icon: googleIcon,
+                              ),
                             ),
                           ],
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );
@@ -245,7 +245,7 @@ class LoginScreen extends StatelessWidget {
       return Container(
         padding: const EdgeInsets.all(8.0),
         height: MediaQuery.of(context).size.height / 1.9,
-        decoration: BoxDecoration(color: Color(0x00737373), borderRadius: BorderRadius.circular(20)),
+        decoration: BoxDecoration(color: const Color(0x00737373), borderRadius: BorderRadius.circular(20)),
         child: Container(
           decoration:  const BoxDecoration(
               color: Colors.white,
@@ -294,6 +294,7 @@ class LoginScreen extends StatelessWidget {
                             child: DefaultButtonView(
                               radius: 10.0,
                               text: 'LOGIN_txt'.tr(),
+                              background: defaultColor,
                               function: () {
                                 if (phoneAuthFormKey.currentState!.validate()) {
                                   print('LoginPressed ${'enter_sms'.tr()}');

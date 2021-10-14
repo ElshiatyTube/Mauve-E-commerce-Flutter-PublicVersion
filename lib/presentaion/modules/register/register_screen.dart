@@ -10,6 +10,7 @@ import 'package:flutterecom/presentaion/views/default_form_field.dart';
 import 'package:flutterecom/shared/commponents/commopnents.dart';
 import 'package:flutterecom/shared/constants/constants.dart';
 import 'package:flutterecom/shared/network/local/cache_helper.dart';
+import 'package:flutterecom/shared/style/colors.dart';
 import 'package:flutterecom/shared/style/icon_broken.dart';
 import 'package:flutterecom/shared/validator.dart';
 
@@ -163,6 +164,7 @@ class RegisterScreen extends StatelessWidget {
                       ConditionalBuilder(
                         condition: state is! RegisterLoadingState,
                         builder: (BuildContext context) => DefaultButtonView(
+                          background: defaultColor,
                             function: () {
                               if (formKey.currentState!.validate()) {
                                 if (cubit.phoneLoginPhoneNum == '' && cubit.googleLLoginEmail == '') {

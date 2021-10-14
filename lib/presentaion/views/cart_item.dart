@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterecom/cubit/cart/cart_cubit.dart';
+import 'package:flutterecom/cubit/cart/cart_state.dart';
 import 'package:flutterecom/shared/network/local/hive/employee.dart';
 import 'package:flutterecom/shared/style/colors.dart';
 import 'package:flutterecom/shared/style/icon_broken.dart';
@@ -61,7 +63,9 @@ class CartItem extends StatelessWidget {
                             )),
                           ),
                           onTap: (){
-
+                            if (cartItem.quantity != 1){
+                              CartCubit.get(context).decreaseProductQuantity(productItem: cartItem);
+                            }
                           },
                         ),
                         const SizedBox(width: 5.0,),
@@ -81,7 +85,9 @@ class CartItem extends StatelessWidget {
                             )),
                           ),
                           onTap: (){
-
+                            if (cartItem.quantity < 20){
+                              CartCubit.get(context).increaseProductQuantity(productItem: cartItem);
+                            }
                           },
                         ),
                       ],
@@ -107,7 +113,7 @@ class CartItem extends StatelessWidget {
                       },
                     ),
                   ],
-                )
+                ),
               ],
             ),
           )

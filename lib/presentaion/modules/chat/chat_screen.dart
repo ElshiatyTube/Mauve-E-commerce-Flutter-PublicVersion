@@ -30,7 +30,6 @@ class _ChatScreenState extends State<ChatScreen> {
     // TODO: implement initState
     super.initState();
     ChatCubit.get(context).getMessages();
-
   }
   @override
   void dispose() {
@@ -64,9 +63,9 @@ class _ChatScreenState extends State<ChatScreen> {
           }
         },
         builder: (context,state){
-          if (_controller.hasClients){
+        /*  if (_controller.hasClients){
             _controller.animateTo(_controller.position.maxScrollExtent, duration: const Duration(milliseconds: 500), curve: Curves.easeOut);
-          }
+          }*/
             return ConditionalBuilder(
             condition: ChatCubit.get(context).messages!=null,
             builder: (BuildContext context)
@@ -79,16 +78,18 @@ class _ChatScreenState extends State<ChatScreen> {
                     Expanded(
                       child: ListView.separated(
                         controller: _controller,
-                        shrinkWrap: true,
+                        reverse: true,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context,index)
                         {
-                          ChatMsgModel message = ChatCubit.get(context).messages![index];
+                          final reversedIndex = ChatCubit.get(context).messages!.length - 1 - index;
+                          final item = ChatCubit.get(context).messages![reversedIndex];
+
+                          ChatMsgModel message = item;
 
                           if(CacheHelper.getString(key: 'uId') == message.uid) {
                             return MyChatMsgItem(chatMsgModel: message);
                           }
-
                           return AdminChatMsgItem(chatMsgModel: message);
                         },
                         separatorBuilder: (context,index) => const SizedBox(height: 15.0,),
@@ -123,16 +124,19 @@ class _ChatScreenState extends State<ChatScreen> {
                             height: 48.0,
                             decoration: const BoxDecoration(
                               color: defaultColor,
-                              borderRadius: BorderRadius.all(Radius.circular(5.0,)),
+                              borderRadius:BorderRadius.all( Radius.circular(5.0,)),
                             ),
                             child: MaterialButton(
                               onPressed: ()
                               {
-                                ChatCubit.get(context).sendMsg
-                                  (
-                                  dateTime: DateTime.now().millisecondsSinceEpoch,
-                                  content: messageController.text, name: AuthCubit.get(context).userModel.name,
-                                );
+                                if(messageController.text.isNotEmpty){
+                                  ChatCubit.get(context).sendMsg
+                                    (
+                                    dateTime: DateTime.now().millisecondsSinceEpoch,
+                                    content: messageController.text, name: AuthCubit.get(context).userModel.name,
+                                  );
+                                }
+
                               },
                               minWidth: 1.0,
                               child: const Icon(

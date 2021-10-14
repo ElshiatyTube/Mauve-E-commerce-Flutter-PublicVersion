@@ -83,10 +83,10 @@ class CartScreen extends StatelessWidget{
                       child: Column(
                         children: [
                           Row(
-                            children: const [
-                              Text('Total'),
-                              Spacer(),
-                              Text('96 EGP',style: TextStyle(color: defaultColor),),
+                            children:  [
+                              const  Text('Total'),
+                              const Spacer(),
+                              cartItems.isNotEmpty ?  Text(cartItems.map((e) => e.price.toDouble() * e.quantity.toDouble()).reduce((value, element) => value + element).toStringAsFixed(2)+' EGP',style: const TextStyle(color: defaultColor),) : Container(),
                             ],
                           ),
                           const SizedBox(height: 20.0,),

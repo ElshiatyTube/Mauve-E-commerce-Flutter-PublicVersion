@@ -27,34 +27,10 @@ class CartCubit extends Cubit<CartStates>{
       final box = Boxes.getEmployees();
       Employee? item = box.get(productId);
       if(item!=null){
-        if(item.productSize == productSize && item.productAddon == productAddon){ //Add with new addons,size
-          item.quantity = item.quantity + quantity;
-          item.save();
-          showToast(msg: 'Quantity Updated', state: ToastedStates.SUCCESS);
-        }else{
-          print('updateAddonSize'); //updateAddonSize
-          final cartItem = Employee()
-            ..productId = productId
-            ..uid = uid
-            ..productName = productName
-            ..productImage = productImage
-            ..productAddon = productAddon
-            ..productSize = productSize
-            ..price = price
-            ..quantity = quantity;
-
-          final box = Boxes.getEmployees();
-          box.put('${productId}_${UniqueKey().hashCode.toString()}', cartItem).then((value) {
-            emit(AddToCartSuccessState());
-            showToast(msg: 'Add Success', state: ToastedStates.SUCCESS);
-          }).then((onError) {
-            emit(AddToCartErrorState(onError.toString()));
-          });
-        }
-
-      }
-      else{
-        print('itemIsNotExist'); //Add new
+        item.quantity = item.quantity + quantity;
+        item.save();
+        showToast(msg: 'Quantity Updated', state: ToastedStates.SUCCESS);
+      }else{
         final cartItem = Employee()
           ..productId = productId
           ..uid = uid
@@ -65,7 +41,6 @@ class CartCubit extends Cubit<CartStates>{
           ..price = price
           ..quantity = quantity;
 
-        final box = Boxes.getEmployees();
         box.put(productId, cartItem).then((value) {
           emit(AddToCartSuccessState());
           showToast(msg: 'Add Success', state: ToastedStates.SUCCESS);
@@ -84,6 +59,28 @@ class CartCubit extends Cubit<CartStates>{
     Boxes.getEmployees().clear().then((value) {
       emit(ClearAllCartItemsState());
     });
+  }
+
+  Future<void> increaseProductQuantity({required Employee productItem}) async {
+    productItem.quantity ++;
+    Employee? item = getCartItemById(productItem: productItem);
+    item!.quantity = productItem.quantity;
+    //item.price = productItem.price * productItem.quantity;
+    await item.save();
+  }
+
+  Future<void> decreaseProductQuantity({required Employee productItem}) async {
+    productItem.quantity --;
+    Employee? item = getCartItemById(productItem: productItem);
+    item!.quantity = productItem.quantity;
+    //item.price = productItem.price * productItem.quantity;
+    await item.save();
+  }
+
+  Employee? getCartItemById({required Employee productItem}){
+    final box = Boxes.getEmployees();
+    Employee? item = box.get(productItem.productId);
+    return item;
   }
 
 

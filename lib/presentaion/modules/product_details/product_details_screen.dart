@@ -443,7 +443,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 '${(widget.productItem.price
                                     + ProductDetailsCubit.get(context).userSelectedAddons.map((e) => e.price).fold(0, (_, e) => _ + e)
                                     + ProductDetailsCubit.get(context).userSelectedSize.price
-                                ) * ProductDetailsCubit.get(context).productQuantityCounter}',
+                                ) /** ProductDetailsCubit.get(context).productQuantityCounter*/}',
                               style: const TextStyle(
                                 fontSize: 16.0,
                                 color: defaultColor,
@@ -468,7 +468,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       function: () {
 
                         CartCubit.get(context).getProductInCartById(
-                            productId: widget.productItem.id ?? '',
+                            productId: '${widget.productItem.id}_${ProductDetailsCubit.get(context).userSelectedAddons.isNotEmpty ? ProductDetailsCubit.get(context).userSelectedAddons.map((e) => e.name).toString() : 'none'}_${widget.productItem.size !=null ? ProductDetailsCubit.get(context).userSelectedSize.name : 'none'}',
                             uid: AuthCubit.get(context).userModel.uId,
                             productName: context.locale.toString() == 'en_EN'? widget.productItem.name : widget.productItem.name_ar,
                             productImage: widget.productItem.image,
@@ -477,7 +477,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             price: ((widget.productItem.price
                                 + ProductDetailsCubit.get(context).userSelectedAddons.map((e) => e.price).fold(0, (_, e) => _ + e)
                                 + ProductDetailsCubit.get(context).userSelectedSize.price
-                            ) * ProductDetailsCubit.get(context).productQuantityCounter).toDouble(),
+                            ).toDouble()),/* * ProductDetailsCubit.get(context).productQuantityCounter).toDouble()*/
                             quantity: ProductDetailsCubit.get(context).productQuantityCounter
                         );
                       },

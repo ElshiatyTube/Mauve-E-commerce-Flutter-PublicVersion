@@ -17,4 +17,6 @@ class DeleteProductFromCartState extends CartStates {}
 class ClearAllCartItemsState extends CartStates {}
 
 
+class IncreaseProductQuantityState extends CartStates {}
+class DecreaseProductQuantityState extends CartStates {}
 

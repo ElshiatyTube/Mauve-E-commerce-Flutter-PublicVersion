@@ -66,7 +66,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                   child: Text(
                                     e.toString(),
                                   ),
-                                ),
+                                ), //
                               )
                               .toList(),
                         )

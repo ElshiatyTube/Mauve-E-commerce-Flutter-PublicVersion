@@ -87,7 +87,8 @@ class LoginScreen extends StatelessWidget {
                 Container(
                     color:  MyColors.scaffoldBackgroundColorMain,
                     child: Image.asset(
-                      'assets/images/logo.png',
+                      'assets/images/logoo.png',
+                      height: 200.0,
                       fit: BoxFit.cover,
                     )),
                 const SizedBox(height: 25.0,),

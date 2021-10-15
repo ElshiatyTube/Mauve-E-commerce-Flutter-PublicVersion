@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterecom/cubit/home_layout/home_layout_cubit.dart';
 import 'package:flutterecom/data/models/category_model.dart';
+import 'package:flutterecom/shared/style/colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CategoryGridItem extends StatelessWidget {
@@ -31,8 +32,8 @@ class CategoryGridItem extends StatelessWidget {
             CachedNetworkImage(
               imageUrl: categoriesItem.image,
               fit: BoxFit.cover,
-              height: 50.0,
-              width: 50.0,
+              height: 52.0,
+              width: 52.0,
               placeholder: (context, url) => Container(),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ), //Image
@@ -47,7 +48,7 @@ class CategoryGridItem extends StatelessWidget {
             const Text(
               '+89',
               style: TextStyle(
-                  color: Colors.red,
+                  color: defaultColor,
                   fontWeight: FontWeight.normal,
                   fontSize: 13.0),
             ),

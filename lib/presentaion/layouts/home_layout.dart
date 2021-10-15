@@ -85,7 +85,7 @@ class HomeLayout extends StatelessWidget {
                 onPressed: () {
                   cubit.changeBottom(1);
                 },
-              ) : Image.asset('assets/images/logo.png'),
+              ) : Image.asset('assets/images/appbarlogo.png',),
               title: DefaultFormField(
                 bgColor: MyColors.wightBG,
                 isDense: true,

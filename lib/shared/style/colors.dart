@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 //const defaultColor = Color(0xff88C660); //#88C660
 const blackColor = Colors.black; //#88C660  //##84C55A
 const MaterialColor defaultColor = const MaterialColor(
-  0xffDB2A2B,
+  0xff64124E, //0xffDB2A2B //#7F3E98 //##64124E
   const <int, Color>{
-    50: const Color(0xffDB2A2B),
-    100: const Color(0xffDB2A2B),
-    200: const Color(0xffDB2A2B),
-    300: const Color(0xffDB2A2B),
-    400: const Color(0xffDB2A2B),
-    500: const Color(0xffDB2A2B),
-    600: const Color(0xffDB2A2B),
-    700: const Color(0xffDB2A2B),
-    800: const Color(0xffDB2A2B),
-    900: const Color(0xffDB2A2B),
+    50: const Color(0xff64124E), //#A19C7F
+    100: const Color(0xff64124E),
+    200: const Color(0xff64124E),
+    300: const Color(0xff64124E),//0xffDB2A2B
+    400: const Color(0xff64124E),
+    500: const Color(0xff64124E),
+    600: const Color(0xff64124E),
+    700: const Color(0xff64124E),
+    800: const Color(0xff64124E),
+    900: const Color(0xff64124E),
   },
 );
 

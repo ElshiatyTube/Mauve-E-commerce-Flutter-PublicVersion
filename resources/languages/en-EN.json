@@ -9,7 +9,7 @@
   "LOGIN_txt": "Login",
   "LOGIN_app": "Login",
 
-  "loginToEnjoy_txt": "Welcome to Red Tries!",
+  "loginToEnjoy_txt": "Welcome to Mauve!",
   "registerToEnjoy_txt": "Register now to enjoy our app",
 
   "enter_email": "Email",
@@ -69,7 +69,7 @@
   "ShareRate": "Share,Rate",
   "ShareApp": "Share App",
   "RateApp": "Rate App",
-  "invite": "Invite you to Download Red App",
+  "invite": "Invite you to Download Mauve App",
   "LogOut": "LogOut",
   "Cancel": "Cancel",
   "Add": "Add",
@@ -161,7 +161,7 @@
   "update_dialog_title": "Need update",
   "update_dialog_content": "A new update is now available on the store, please download it to enjoy using the app",
   "update": "Update Now",
-  "invite_balance_share_txt": "Invite you to download Red app and make order through it using this code:",
+  "invite_balance_share_txt": "Invite you to download Mauve app and make order through it using this code:",
   "send_invite_via": "Send Invitation Via",
   "have_inviteCode": "Do you have invitation code?",
   "enter_inv": "Enter Invitation Code",

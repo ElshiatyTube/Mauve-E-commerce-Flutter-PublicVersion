@@ -4,23 +4,23 @@ abstract class HomeLayoutStates{}
 
 class HomeLayoutInitState extends HomeLayoutStates {}
 
-class UpdateMainUserTokenStateSuccess extends HomeLayoutInitState{}
+class UpdateMainUserTokenStateSuccess extends HomeLayoutStates{}
 
-class UpdateMainUserTokenStateFailed extends HomeLayoutInitState{}
+class UpdateMainUserTokenStateFailed extends HomeLayoutStates{}
 
-class UpdateMainUserTokenStateNotLogin extends HomeLayoutInitState{}
+class UpdateMainUserTokenStateNotLogin extends HomeLayoutStates{}
 
 
 //notification
-class GetNotifyDataBackgroundSuccess extends HomeLayoutInitState{
+class GetNotifyDataBackgroundSuccess extends HomeLayoutStates{
   final String backgroundData;
   GetNotifyDataBackgroundSuccess(this.backgroundData);
 }
-class InitFirebaseBackgroundFCMSucess extends HomeLayoutInitState{}
+class InitFirebaseBackgroundFCMSucess extends HomeLayoutStates{}
 
 //Get User Data States
-class GetUserDataSuccessState extends HomeLayoutInitState{}
-class GetUserDataFailedState extends HomeLayoutInitState{
+class GetUserDataSuccessState extends HomeLayoutStates{}
+class GetUserDataFailedState extends HomeLayoutStates{
   final String error;
 
   GetUserDataFailedState(this.error);
@@ -29,43 +29,43 @@ class GetUserDataFailedState extends HomeLayoutInitState{
 
 
 //Home States
-class SliderIndicatorChange extends HomeLayoutInitState{}
+class SliderIndicatorChange extends HomeLayoutStates{}
 
 //Category States
-class LoadingCategoriesState extends HomeLayoutInitState{}
-class SuccessCategoriesState extends HomeLayoutInitState{
+class LoadingCategoriesState extends HomeLayoutStates{}
+class SuccessCategoriesState extends HomeLayoutStates{
 
 }
-class FailedCategoriesState extends HomeLayoutInitState{
+class FailedCategoriesState extends HomeLayoutStates{
   final String error;
 
   FailedCategoriesState(this.error);
 }
 //Products States
-class LoadingProductsState extends HomeLayoutInitState{}
-class SuccessProductsState extends HomeLayoutInitState{
+class LoadingProductsState extends HomeLayoutStates{}
+class SuccessProductsState extends HomeLayoutStates{
 
 }
-class FailedProductsState extends HomeLayoutInitState{
+class FailedProductsState extends HomeLayoutStates{
   final String error;
 
   FailedProductsState(this.error);
 }
 
 //Navigation States
-class ChangeBottomNavState extends HomeLayoutInitState{}
-class NavigateToProductListByCategoryState extends HomeLayoutInitState{
+class ChangeBottomNavState extends HomeLayoutStates{}
+class NavigateToProductListByCategoryState extends HomeLayoutStates{
   final CategoriesModel categoryItem;
 
   NavigateToProductListByCategoryState(this.categoryItem);
 }
-class NavigateToToCategoryListState extends HomeLayoutInitState{}
+class NavigateToToCategoryListState extends HomeLayoutStates{}
 
 
 //Setting Screen
-class WelcomeState extends HomeLayoutInitState{}
+class WelcomeState extends HomeLayoutStates{}
 
-class GetStoreInfoStateSuccess extends HomeLayoutInitState{
+class GetStoreInfoStateSuccess extends HomeLayoutStates{
   final bool openState;
   final int androidVersion,iosVersion;
   final String appleId;
@@ -76,9 +76,9 @@ class GetStoreInfoStateSuccess extends HomeLayoutInitState{
 
 
 //Contact Screen
-class UserSubmitContactMessageLoadingState extends HomeLayoutInitState{}
-class UserSubmitContactMessageSuccessState extends HomeLayoutInitState{}
-class UserSubmitContactMessageErrorState extends HomeLayoutInitState{
+class UserSubmitContactMessageLoadingState extends HomeLayoutStates{}
+class UserSubmitContactMessageSuccessState extends HomeLayoutStates{}
+class UserSubmitContactMessageErrorState extends HomeLayoutStates{
   final String error;
 
   UserSubmitContactMessageErrorState(this.error);

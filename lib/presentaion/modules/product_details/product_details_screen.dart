@@ -87,7 +87,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           },
         ),
         actions: [
-        /*  Platform.isAndroid  ? BlocBuilder<ProductDetailsCubit,ProductDetailsStates>(
+          Platform.isAndroid  ? BlocBuilder<ProductDetailsCubit,ProductDetailsStates>(
             builder: (context,state){
               return IconButton(
                 onPressed: () {
@@ -99,7 +99,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 icon: const Icon(Iconly_Broken.Send,color: MyColors.iconsColor,),
               );
             },
-          ) : Container(),*/
+          ) : Container(),
           IconButton(
             onPressed: () {
               scaffoldKey.currentState!.showBottomSheet((context) => SubmitReviewSheet(rateTextController:rateTextController,productItem: widget.productItem,));
@@ -147,7 +147,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 imageUrl: widget.productItem.image,
                                 height: MediaQuery.of(context).size.height / 2,
                                 width: double.infinity,
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                               ),
                             ),
                           ),

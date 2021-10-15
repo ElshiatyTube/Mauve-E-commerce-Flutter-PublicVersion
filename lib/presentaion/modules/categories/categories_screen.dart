@@ -37,7 +37,7 @@ class CategoriesScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: 110,
                     imageUrl:
-                    'https://firebasestorage.googleapis.com/v0/b/flutterecom-b7f81.appspot.com/o/istockphoto-907575112-170667a.jpg?alt=media&token=f4b86e6d-ebb7-461f-9785-c28b4c52dbdf',
+                    'https://firebasestorage.googleapis.com/v0/b/flutterecom-b7f81.appspot.com/o/newDesign%2Fslide2.jpg?alt=media&token=705ed643-e95a-44f0-bf3d-3fa3823dff07',
                     fit: BoxFit.cover,
                     placeholder: (context, url) => Container(),
                     errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -47,7 +47,7 @@ class CategoriesScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 child: const Text(
-                  'Choose your BRAND',
+                  '',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.white,

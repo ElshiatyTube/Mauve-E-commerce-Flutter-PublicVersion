@@ -30,9 +30,9 @@ class CategoryListItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: CachedNetworkImage(
-                width: 62.0,
-                height: 62.0,
-                fit: BoxFit.cover,
+                width: 65.0,
+                height: 65.0,
+                fit: BoxFit.contain,
                 imageUrl: categoryItem.image,
                 placeholder: (context, url) => Container(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),

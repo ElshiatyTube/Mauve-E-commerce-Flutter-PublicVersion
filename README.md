@@ -1,52 +1,78 @@
-# Red-Tires-E-commerce-Flutter-app-BloC
 
-Red-Tires-E-commerce-Flutter-app-BloC Arch (Demo / Under Development)
+# Mauve Flutter E-commerce
 
-Red Tires| Flutter (Demo / Under Development)
-*Custom UI/UX
-*Bloc Arch and State management
-*Dart
-*Clean code and arch standards
-*MVVM
-*Google, Phone, Email Auth
-*Hive DB for Local Cart system
-*Firebase Firestore (As a Rest API)
-*Dynamic FCM
+Mauve E-commerce single vendor | Flutter BloC arch
+
+
+## Tech Stack
+
+**Client:** Dart, Flutter
+
+**Server:** Firebase firestore
+
+**Features, Techniques:** 
+
+*Clone of Custom UI/UX
+
+*BloC Arch & State management
+
+*Clean code and arch
+
+*Hive DB (for local cart system)
+
+*Firebase Auth (Phone - Email -Google)
+
+*Firebase Firestore (UI=>BloC=>Repo=>Api pattern for fetch data)
+
+*FCM (Manual and auto depend on some actions)
+
 *Realtime Chat
+
+*Google maps (place picker)
+
+*Localization
+
+*Realtime singleton connectivity check with BloC listener
+
+*Open Rate system with pagination
+
+*Order History screen with status tracking
+
+*FCM (in terminal mode with native bg service without package)
+
+*Google maps -directions api
+
+*Realtime location tracking
+
+*Smart search and filtration system
+
 *Android Native fully functional control panel
 
-![image](https://mostaql.hsoubcdn.com/uploads/thumbnails/372144/615a0c8bb98a8/0732782c-bd50-45dd-ad76-d6b64e7399ca.jpg)
-![image](https://mostaql.hsoubcdn.com/uploads/372144/615a0c8c4b67d/9d1b386c-125c-430c-a2ca-c28271287529.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615a0c8cd2a9e/4446821a-4738-4d58-8319-f39b1312ebf6.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615a0c8c8deb9/0732782c-bd50-45dd-ad76-d6b64e7399ca.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615ca20918c0f/12322575-1286-4a64-8986-01eaa140e79e.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615b5fcb726b4/Screenshot2021-10-04-19-59-38-530com.ecomflut.android.tws.png)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615ca209855e5/fb3dd122-4e50-4bfd-a2ae-196850015075.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615e345e2d456/0e530540-dafb-4414-bb81-37d711278530.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615e345e912a7/8d232ad2-fc05-4d53-83fc-8b7baa3ec417.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/615e345ed07ba/032913ef-e53c-464b-819e-d0bd54d44c44.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/61621846f3b6b/958f89fb-069e-4c08-9780-ecfc5a14f134.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/616366f7228fc/c1151cae-5178-426f-9beb-28b363ba72b8.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/61621847a18c4/c722775d-6166-40c6-84d7-5a4e1ea39293.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/6162184761c0f/43dc40b7-48fa-423b-848a-fcc469ec3321.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/61660d5b2086d/rum.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/616218484d488/d57e9047-45bf-4b7b-98fa-4505e88989e8.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/61673c3c14cd1/8d3251f1-c922-4fe0-850c-0741aef60171.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/61673c3c7f92a/3b414eca-e930-40b8-94d4-964a1ab14e9a.jpg)
-![ScreenShot](https://mostaql.hsoubcdn.com/uploads/372144/61673c3ccc86e/b6d044e9-51a8-4a54-9181-ba7210c49500.jpg)
+*Web Support (Soon)
+
+  
+## 🔗 Links
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/youssef-hany-540179161)
+Mostaql: https://mostaql.com/portfolio/789274-red-tires-flutter-android-ios-web
+## Screenshots
+
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/thumbnails/372144/6169d523a5101/6ad1c642-d6cf-4ee0-83f9-459459484ffb.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50b5f6c5/1d565ff7-294e-41c7-a362-3d679fb7c592.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d5241eee3/a96c18b8-4b0a-4032-a51b-ce5138de0de8.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50c13ba9/8f1272a3-206b-4f7f-b543-d0cb83debb15.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50c50e73/09da5699-ebb3-4643-9b67-dcfd4ea5cb53.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50c961f5/32ccd297-b303-462a-a499-1aa88a4f42b0.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50cd9920/54b4b90d-b938-4ff1-b3f0-cc799b07069f.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50d21376/76f55292-141e-4f1b-a98c-ef77d0639e58.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50d7ba00/78e77e4a-af16-4e38-aea4-36afb31ec7a2.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50dc69a5/7314debb-4978-4eb9-b78e-1b1e4b577921.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50e25297/61921e34-f475-4b83-a579-d112d749fc93.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d524a0c13/cb8a09cb-00ca-45f2-86c3-f809fddbc91c.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d524d4847/cd1fe597-2e82-48d1-8e46-5b53e54be733.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d52519ea5/d86d46d9-ce28-443f-ac61-9d67d3d378c7.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d52557099/ecd4e80e-5f3a-414a-bcf9-ee3342a5829a.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d855f2651/dd77f03a-6ec0-4522-9995-413a01897ab1.jpg)
 
 
 
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  

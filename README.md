@@ -1,8 +1,7 @@
 
-# Red Tires Flutter E-commerce
+# Mauve Flutter E-commerce
 
-Red Tires E-commerce single vendor | Flutter BloC arch
-
+Mauve E-commerce single vendor | Flutter BloC arch
 
 
 ## Tech Stack
@@ -57,21 +56,23 @@ Red Tires E-commerce single vendor | Flutter BloC arch
 Mostaql: https://mostaql.com/portfolio/789274-red-tires-flutter-android-ios-web
 ## Screenshots
 
-![App Screenshot](https://camo.githubusercontent.com/103708f727936bd4b7ef33c9387fb7e3c7ceeb26e492415ffb2e947fcf269aea/68747470733a2f2f6d6f737461716c2e68736f756263646e2e636f6d2f75706c6f6164732f7468756d626e61696c732f3337323134342f363135613063386262393861382f30373332373832632d626435302d343564642d616437362d6436623634653733393963612e6a7067)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/615a0c8c4b67d/9d1b386c-125c-430c-a2ca-c28271287529.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/615a0c8cd2a9e/4446821a-4738-4d58-8319-f39b1312ebf6.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/615b5fcb726b4/Screenshot2021-10-04-19-59-38-530com.ecomflut.android.tws.png)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/615e345e2d456/0e530540-dafb-4414-bb81-37d711278530.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/615e345e912a7/8d232ad2-fc05-4d53-83fc-8b7baa3ec417.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/615e345ed07ba/032913ef-e53c-464b-819e-d0bd54d44c44.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/616366f7228fc/c1151cae-5178-426f-9beb-28b363ba72b8.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/616366f78621a/10f14970-3002-4e22-a4d5-591361633b32.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/61660d5b2086d/rum.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/61673c3c14cd1/8d3251f1-c922-4fe0-850c-0741aef60171.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/61673c3ccc86e/b6d044e9-51a8-4a54-9181-ba7210c49500.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/61679e0f87050/a783e82d-23cd-4253-89b9-a5d79440d061.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169a4ad31907/fc6ee2af-21d5-421c-82b9-752862e746b1.jpg)
-![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169a4acbbcf3/8f555f2b-64ce-404d-a24e-459cfe5d0e8c.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/thumbnails/372144/6169d523a5101/6ad1c642-d6cf-4ee0-83f9-459459484ffb.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50b5f6c5/1d565ff7-294e-41c7-a362-3d679fb7c592.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d5241eee3/a96c18b8-4b0a-4032-a51b-ce5138de0de8.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50c13ba9/8f1272a3-206b-4f7f-b543-d0cb83debb15.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50c50e73/09da5699-ebb3-4643-9b67-dcfd4ea5cb53.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50c961f5/32ccd297-b303-462a-a499-1aa88a4f42b0.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50cd9920/54b4b90d-b938-4ff1-b3f0-cc799b07069f.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50d21376/76f55292-141e-4f1b-a98c-ef77d0639e58.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50d7ba00/78e77e4a-af16-4e38-aea4-36afb31ec7a2.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50dc69a5/7314debb-4978-4eb9-b78e-1b1e4b577921.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d50e25297/61921e34-f475-4b83-a579-d112d749fc93.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d524a0c13/cb8a09cb-00ca-45f2-86c3-f809fddbc91c.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d524d4847/cd1fe597-2e82-48d1-8e46-5b53e54be733.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d52519ea5/d86d46d9-ce28-443f-ac61-9d67d3d378c7.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d52557099/ecd4e80e-5f3a-414a-bcf9-ee3342a5829a.jpg)
+![App Screenshot](https://mostaql.hsoubcdn.com/uploads/372144/6169d855f2651/dd77f03a-6ec0-4522-9995-413a01897ab1.jpg)
+
 
 
   

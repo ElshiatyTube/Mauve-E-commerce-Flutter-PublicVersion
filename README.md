@@ -46,7 +46,7 @@ Mauve E-commerce single vendor | Flutter BloC arch
 
 *Smart search and filtration system
 
-*Android Native fully functional control panel
+*Android Native fully functional control panel (Will be uploaded soon)
 
 *Web Support (Soon)
 
